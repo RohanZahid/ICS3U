@@ -20,38 +20,64 @@ public class Version1 {
 		Console c = new Console();
 		do
 		{
+			
+			c.setTextBackgroundColor(Color.black);
+			c.setTextColor(Color.white);
+			c.clear();
 			c.println("Please press ENTER twice to start.");
 			c.readLine();
 			c.clear();
 			c.println("You and your friend walk into a convenience store.");
 			c.println("Do you buy food or a drink? (food/drink)");
 			item = c.readString();
+			while (!item.equalsIgnoreCase("food")&&!item.equalsIgnoreCase("drink")) {
+				c.println("That is not a valid response.");
+				c.println("You and your friend walk into a convenience store.");
+				c.println("Do you buy food or a drink? (food/drink)");
+				item = c.readString();
+			}
 			if (item.equalsIgnoreCase("drink")) {
 				c.println("You go to the back to get a drink. Suddenly, a man with a gun enters to rob the store and shoots your friend!" );
 				c.println("After the robber leaves, do you help your friend or call the police? (help/call)");
 				action = c.readString();
+				while (!action.equalsIgnoreCase("help")&&!action.equalsIgnoreCase("call")) {
+					c.println("That is not a valid response.");
+					c.println("After the robber leaves, do you help your friend or call the police? (help/call)");
+					action = c.readString();
+				}
 				if (action.equalsIgnoreCase("call")) {
 					int x = (int)(Math.random() *10) + 1;
 					if (x == 1 ||x == 2||x == 3||x == 4||x == 5||x == 6||x == 7||x == 8||x == 9) {
 						c.println("Your friend dies a PAINFUL death!");
 						c.println("You are brimming with RAGE. Do you want to get REVENGE?! (Y/N)");
 						revenge = c.readString();
+						/*while (!revenge.equalsIgnoreCase("y")&&!revenge.equalsIgnoreCase("n")) {
+							c.println("That is not a valid response.");
+							c.println("You are brimming with RAGE. Do you want to get REVENGE?! (Y/N)");
+							revenge = c.readString();
+						}*/
 						while (revenge.equalsIgnoreCase("n")) {
 							for (s =0; s<2; s++)
 							{
 								if (s == 0) {
 									c.println("You are getting depressed... Do you want to get revenge, now? (Y/N)");
 									revenge = c.readString();
+									while (!revenge.equalsIgnoreCase("y")&&!revenge.equalsIgnoreCase("n")) {
+										c.println("That is not a valid response.");
+										c.println("You are brimming with RAGE. Do you want to get REVENGE?! (Y/N)");
+										revenge = c.readString();
+									}
 								}
 								else if (s == 1) {
-									c.println("You are getting more depressed... Do you want to get REVENGE?! (Y/N)");
-									revenge = c.readString();
-								}
-								else if (s == 2) {
 									c.println("You get depressed to the point of no return... and commit suicide.");
 									c.println("Thank You for playing!");
 									c.println("Do you want to play again?   (Y/N)");
 									again = c.readString();
+									while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+										c.println("That is not a valid response.");
+										c.println("Do you want to play again?   (Y/N)");
+										again = c.readString();
+									}
 									if (again.equalsIgnoreCase("y")) {
 										play = true;
 										c.clear();
@@ -60,32 +86,62 @@ public class Version1 {
 										play = false;
 									}
 								}
+								
 							}
+						}
+						{
+							
 							if (revenge.equalsIgnoreCase("y")) {
 								c.println("You go back to the shop to get evidence.");
 								c.println("Do you look for the evidence in the garbage or at the shooting site? (garbage/site)");
 								evidence = c.readString();
+								while (!evidence.equalsIgnoreCase("garbage")&&!evidence.equalsIgnoreCase("site")) {
+									c.println("That is not a valid response.");
+									c.println("Do you look for the evidence in the garbage or at the shooting site? (garbage/site)");
+									evidence = c.readString();
+								}
 								if (evidence.equalsIgnoreCase("garbage")) {
 									c.println("You do not find anything important. There is a half-eaten cheeseburger though...");
 									c.println("You then go to the shooting site and find a license.");
 									c.println("You find the driver's licence of the shooter.");
 									c.println("Do you keep the license, or give it to the police?(keep/give)");
 									license = c.readString();
+									while (!license.equalsIgnoreCase("keep")&&!license.equalsIgnoreCase("give")) {
+										c.println("That is not a valid response.");
+										c.println("Do you keep the license, or give it to the police?(keep/give)");
+										license = c.readString();
+									}
 									if (license.equalsIgnoreCase("keep")){
 										c.println("You see the address on the license and go there...");
 										c.println("When you get there, the police are outside the residence.");
 										c.println("Do you give up or go through the back door? (quit/door)");
 										decision = c.readString();
+										while (!decision.equalsIgnoreCase("quit")&&!decision.equalsIgnoreCase("door")) {
+											c.println("That is not a valid response.");
+											c.println("Do you give up or go through the back door? (quit/door)");
+											decision = c.readString();
+										}
 										if (decision.equalsIgnoreCase("door")) {
 											c.println("The back door is open and you enter. You find a gun and a fire extinguisher.");
 											c.println("Which do you choose? (gun/extinguisher)");
 											weapon = c.readString();
+											while (!weapon.equalsIgnoreCase("gun")&&!weapon.equalsIgnoreCase("extinguisher")) {
+												c.println("That is not a valid response.");
+												c.println("Which do you choose? (gun/extinguisher)");
+												weapon = c.readString();
+											}
 											if(weapon.equalsIgnoreCase("extinguisher")) {
 												c.println("You hit the shooter on the head with the fire extinguisher, and he gets knocked out.");
 												c.println("The police hear the noise and come inside.They arrest the shooter and give you $1,000,000 to keep quiet...");
 												c.println("Thank You for playing!");
 												c.println("Do you want to play again?   (Y/N)");
 												again = c.readString();
+												while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+													c.println("That is not a valid response.");
+													c.println("Thank You for playing!");
+													c.println("Do you want to play again?   (Y/N)");
+													again = c.readString();
+												}
 												if (again.equalsIgnoreCase("y")) {
 													play = true;
 													c.clear();
@@ -98,6 +154,12 @@ public class Version1 {
 													c.println("Thank You for playing!");
 													c.println("Do you want to play again?   (Y/N)");
 													again = c.readString();
+													while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+														c.println("That is not a valid response.");
+														c.println("Thank You for playing!");
+														c.println("Do you want to play again?   (Y/N)");
+														again = c.readString();
+													}
 													if (again.equalsIgnoreCase("y")) {
 														c.clear();
 														play = true;
@@ -113,6 +175,12 @@ public class Version1 {
 												c.println("Thank You for playing!");
 												c.println("Do you want to play again?   (Y/N)");
 												again = c.readString();
+												while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+													c.println("That is not a valid response.");
+													c.println("Thank You for playing!");
+													c.println("Do you want to play again?   (Y/N)");
+													again = c.readString();
+												}
 												if (again.equalsIgnoreCase("y")) {
 													play = true;
 													c.clear();
@@ -125,6 +193,12 @@ public class Version1 {
 													c.println("Thank You for playing!");
 													c.println("Do you want to play again?   (Y/N)");
 													again = c.readString();
+													while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+														c.println("That is not a valid response.");
+														c.println("Thank You for playing!");
+														c.println("Do you want to play again?   (Y/N)");
+														again = c.readString();
+													}
 													if (again.equalsIgnoreCase("y")) {
 														c.clear();
 														play = true;
@@ -139,6 +213,12 @@ public class Version1 {
 												c.println("Thank You for playing!");
 												c.println("Do you want to play again?   (Y/N)");
 												again = c.readString();
+												while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+													c.println("That is not a valid response.");
+													c.println("Thank You for playing!");
+													c.println("Do you want to play again?   (Y/N)");
+													again = c.readString();
+												}
 												if (again.equalsIgnoreCase("y")) {
 													c.clear();
 													play = true;
@@ -151,6 +231,12 @@ public class Version1 {
 													c.println("Thank You for playing!");
 													c.println("Do you want to play again?   (Y/N)");
 													again = c.readString();
+													while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+														c.println("That is not a valid response.");
+														c.println("Thank You for playing!");
+														c.println("Do you want to play again?   (Y/N)");
+														again = c.readString();
+													}
 													if (again.equalsIgnoreCase("y")) {
 														c.clear();
 														play = true;
@@ -166,6 +252,12 @@ public class Version1 {
 											c.println("Thank You for playing!");
 											c.println("Do you want to play again?   (Y/N)");
 											again = c.readString();
+											while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+												c.println("That is not a valid response.");
+												c.println("Thank You for playing!");
+												c.println("Do you want to play again?   (Y/N)");
+												again = c.readString();
+											}
 											if (again.equalsIgnoreCase("y")) {
 												play = true;
 												c.clear();
@@ -179,6 +271,12 @@ public class Version1 {
 											c.println("Thank You for playing!");
 											c.println("Do you want to play again?   (Y/N)");
 											again = c.readString();
+											while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+												c.println("That is not a valid response.");
+												c.println("Thank You for playing!");
+												c.println("Do you want to play again?   (Y/N)");
+												again = c.readString();
+											}
 											if (again.equalsIgnoreCase("y")) {
 												c.clear();
 												play = true;
@@ -193,6 +291,12 @@ public class Version1 {
 										c.println("Thank You for playing!");
 										c.println("Do you want to play again?   (Y/N)");
 										again = c.readString();
+										while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+											c.println("That is not a valid response.");
+											c.println("Thank You for playing!");
+											c.println("Do you want to play again?   (Y/N)");
+											again = c.readString();
+										}
 										if (again.equalsIgnoreCase("y")) {
 											c.clear();
 											play = true;
@@ -206,6 +310,12 @@ public class Version1 {
 										c.println("Thank You for playing!");
 										c.println("Do you want to play again?   (Y/N)");
 										again = c.readString();
+										while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+											c.println("That is not a valid response.");
+											c.println("Thank You for playing!");
+											c.println("Do you want to play again?   (Y/N)");
+											again = c.readString();
+										}
 										if (again.equalsIgnoreCase("y")) {
 											c.clear();
 											play = true;
@@ -220,21 +330,42 @@ public class Version1 {
 									c.println("You find the driver's licence of the shooter.");
 									c.println("Do you keep the license, or give it to the police?(keep/give)");
 									license = c.readString();
+									while (!license.equalsIgnoreCase("keep")&&!license.equalsIgnoreCase("give")) {
+										c.println("That is not a valid response.");
+										c.println("Do you keep the license, or give it to the police?(keep/give)");
+										license = c.readString();
+									}
 									if (license.equalsIgnoreCase("keep")){
 										c.println("You see the address on the license and go there...");
 										c.println("When you get there, the police are outside the residence.");
 										c.println("Do you give up or go through the back door? (quit/door)");
 										decision = c.readString();
+										while (!decision.equalsIgnoreCase("quit")&&!decision.equalsIgnoreCase("door")) {
+											c.println("That is not a valid response.");
+											c.println("Do you give up or go through the back door? (quit/door)");
+											decision = c.readString();
+										}
 										if (decision.equalsIgnoreCase("door")) {
 											c.println("The back door is open and you enter. You find a gun and a fire extinguisher.");
 											c.println("Which do you choose? (gun/extinguisher)");
 											weapon = c.readString();
+											while (!weapon.equalsIgnoreCase("quit")&&!weapon.equalsIgnoreCase("door")) {
+												c.println("That is not a valid response.");
+												c.println("Which do you choose? (gun/extinguisher)");
+												weapon = c.readString();
+											}
 											if(weapon.equalsIgnoreCase("extinguisher")) {
 												c.println("You hit the shooter on the head with the fire extinguisher, and he gets knocked out.");
 												c.println("The police hear the noise and come inside.They arrest the shooter and give you $1,000,000 to keep quiet...");
 												c.println("Thank You for playing!");
 												c.println("Do you want to play again?   (Y/N)");
 												again = c.readString();
+												while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+													c.println("That is not a valid response.");
+													c.println("Thank You for playing!");
+													c.println("Do you want to play again?   (Y/N)");
+													again = c.readString();
+												}
 												if (again.equalsIgnoreCase("y")) {
 													play = true;
 													c.clear();
@@ -249,6 +380,12 @@ public class Version1 {
 												c.println("Thank You for playing!");
 												c.println("Do you want to play again?   (Y/N)");
 												again = c.readString();
+												while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+													c.println("That is not a valid response.");
+													c.println("Thank You for playing!");
+													c.println("Do you want to play again?   (Y/N)");
+													again = c.readString();
+												}
 												if (again.equalsIgnoreCase("y")) {
 													play = true;
 													c.clear();
@@ -263,6 +400,12 @@ public class Version1 {
 											c.println("Thank You for playing!");
 											c.println("Do you want to play again?   (Y/N)");
 											again = c.readString();
+											while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+												c.println("That is not a valid response.");
+												c.println("Thank You for playing!");
+												c.println("Do you want to play again?   (Y/N)");
+												again = c.readString();
+											}
 											if (again.equalsIgnoreCase("y")) {
 												play = true;
 												c.clear();
@@ -281,6 +424,12 @@ public class Version1 {
 									c.println("Thank You for playing!");
 									c.println("Do you want to play again?   (Y/N)");
 									again = c.readString();
+									while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+										c.println("That is not a valid response.");
+										c.println("Thank You for playing!");
+										c.println("Do you want to play again?   (Y/N)");
+										again = c.readString();
+									}
 									if (again.equalsIgnoreCase("y")) {
 										c.clear();
 										play = true;
@@ -343,12 +492,18 @@ public class Version1 {
 									play = false;
 								}
 							}
-						}*/
+						}
 							else {
 								c.println("You fall into an eternal slumber...");
 								c.println("Thank You for playing!");
 								c.println("Do you want to play again?   (Y/N)");
 								again = c.readString();
+								while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+									c.println("That is not a valid response.");
+									c.println("Thank You for playing!");
+									c.println("Do you want to play again?   (Y/N)");
+									again = c.readString();
+								}
 								if (again.equalsIgnoreCase("y")) {
 									c.clear();
 									play = true;
@@ -356,9 +511,10 @@ public class Version1 {
 								else if (again.equalsIgnoreCase("n")) {
 									play = false;
 								}
-							}
+							}*/
 
 						}
+						
 					}
 					else {  
 						c.println("Your friend is rushed to the hospital and survives. The criminal is apprehended.");
@@ -366,6 +522,12 @@ public class Version1 {
 						c.println("Thank You for playing!");
 						c.println("Do you want to play again?   (Y/N)");
 						again = c.readString();
+						while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+							c.println("That is not a valid response.");
+							c.println("Thank You for playing!");
+							c.println("Do you want to play again?   (Y/N)");
+							again = c.readString();
+						}
 						if (again.equalsIgnoreCase("y")) {
 							play = true;
 							c.clear();
@@ -381,6 +543,12 @@ public class Version1 {
 					c.println("Thank You for playing!");
 					c.println("Do you want to play again?   (Y/N)");
 					again = c.readString();
+					while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+						c.println("That is not a valid response.");
+						c.println("Thank You for playing!");
+						c.println("Do you want to play again?   (Y/N)");
+						again = c.readString();
+					}
 					if (again.equalsIgnoreCase("y")) {
 						play = true;
 						c.clear();
@@ -393,6 +561,12 @@ public class Version1 {
 						c.println("Thank You for playing!");
 						c.println("Do you want to play again?   (Y/N)");
 						again = c.readString();
+						while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+							c.println("That is not a valid response.");
+							c.println("Thank You for playing!");
+							c.println("Do you want to play again?   (Y/N)");
+							again = c.readString();
+						}
 						if (again.equalsIgnoreCase("y")) {
 							c.clear();
 							play = true;
@@ -407,6 +581,12 @@ public class Version1 {
 					c.println("Thank You for playing!");
 					c.println("Do you want to play again?   (Y/N)");
 					again = c.readString();
+					while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+						c.println("That is not a valid response.");
+						c.println("Thank You for playing!");
+						c.println("Do you want to play again?   (Y/N)");
+						again = c.readString();
+					}
 					if (again.equalsIgnoreCase("y")) {
 						c.clear();
 						play = true;
@@ -422,14 +602,30 @@ public class Version1 {
 				c.println("You wake up in a windowless room. You are lying in a bed.");
 				c.println("Do you get up?(y/n)");
 				bed = c.readString();
+				while (!bed.equalsIgnoreCase("y")&&!bed.equalsIgnoreCase("n")) {
+					c.println("That is not a valid response.");
+					c.println("You wake up in a windowless room. You are lying in a bed.");
+					c.println("Do you get up?(y/n)");
+					bed = c.readString();
+				}
 				if (bed.equalsIgnoreCase("y")) {
 					c.println("You get out of bed. It's very dark.");
 					c.println("Do you go forward, left, or right? (f/l/r)");
 					where1 = c.readString();
+					while (!where1.equalsIgnoreCase("f")&&!where1.equalsIgnoreCase("l")&&!where1.equalsIgnoreCase("r")) {
+						c.println("That is not a valid response.");
+						c.println("Do you go forward, left, or right? (f/l/r)");
+						where1 = c.readString();
+					}
 					while(where1.equalsIgnoreCase("l")) {
 						c.println("You do not find anything and return.");
 						c.println("Do you go forward, left, or right? (f/l/r)");
 						where1 = c.readString();
+						while (!where1.equalsIgnoreCase("f")&&!where1.equalsIgnoreCase("l")&&!where1.equalsIgnoreCase("r")) {
+							c.println("That is not a valid response.");
+							c.println("Do you go forward, left, or right? (f/l/r)");
+							where1 = c.readString();
+						}
 
 					}
 					if (where1.equalsIgnoreCase("f")) {
@@ -441,6 +637,11 @@ public class Version1 {
 						c.println("To the right, there is a bottomless pit.");
 						c.println("Where do you go? (f/l/r)");
 						where2 = c.readString();
+						while (!where2.equalsIgnoreCase("f")&&!where2.equalsIgnoreCase("l")&&!where2.equalsIgnoreCase("r")) {
+							c.println("That is not a valid response.");
+							c.println("Do you go forward, left, or right? (f/l/r)");
+							where2 = c.readString();
+						}
 						if (where2.equalsIgnoreCase("f")) {
 							c.println("You pick up the bag and find a key.");
 							c.println("As you pick up the key, you notice a trap door under the bed and inspect it.");
@@ -472,6 +673,12 @@ public class Version1 {
 										c.println("Thank You for playing!");
 										c.println("Do you want to play again?   (Y/N)");
 										again = c.readString();
+										while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+											c.println("That is not a valid response.");
+											c.println("Thank You for playing!");
+											c.println("Do you want to play again?   (Y/N)");
+											again = c.readString();
+										}
 										if (again.equalsIgnoreCase("y")) {
 											play = true;
 											c.clear();
@@ -490,11 +697,22 @@ public class Version1 {
 								c.println("You hear a man exclaim 'Its a miracle!'");
 								c.println("What do you say? A:Where am I? or B:What happened...(A/B) ");
 								talk1=c.readString();
+								while (!talk1.equalsIgnoreCase("a")&&!talk1.equalsIgnoreCase("a")) {
+									c.println("That is not a valid response.");
+									c.println("What do you say? A:Where am I? or B:What happened...(A/B) ");
+									talk1=c.readString();
+								}
 								if(talk1.equalsIgnoreCase("A")){
 									c.println("Man: You are in a Toronto Central Hospital");
 									c.println("C: Will I be alright?");
 									c.println("D: Did you find the shooter?		(C/D)");
 									talk2=c.readString();
+									while (!talk2.equalsIgnoreCase("c")&&!talk2.equalsIgnoreCase("d")) {
+										c.println("That is not a valid response.");
+										c.println("C: Will I be alright?");
+										c.println("D: Did you find the shooter?		(C/D)");
+										talk2=c.readString();
+									}
 									if(talk2.equalsIgnoreCase("C")) {
 										c.println("Man: Yes, you will be able to leave the hospital after 3 weeks of physiotherapy.");
 										c.println("After you leave the hospital, you meet with your friend and discuss what happened.");
@@ -502,6 +720,12 @@ public class Version1 {
 										c.println("Thank You for playing!");
 										c.println("Do you want to play again?   (Y/N)");
 										again = c.readString();
+										while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+											c.println("That is not a valid response.");
+											c.println("Thank You for playing!");
+											c.println("Do you want to play again?   (Y/N)");
+											again = c.readString();
+										}
 										if (again.equalsIgnoreCase("y")) {
 											play = true;
 											c.clear();
@@ -520,6 +744,12 @@ public class Version1 {
 										c.println("Thank You for playing!");
 										c.println("Do you want to play again?   (Y/N)");
 										again = c.readString();
+										while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+											c.println("That is not a valid response.");
+											c.println("Thank You for playing!");
+											c.println("Do you want to play again?   (Y/N)");
+											again = c.readString();
+										}
 										if (again.equalsIgnoreCase("y")) {
 											play = true;
 											c.clear();
@@ -537,6 +767,12 @@ public class Version1 {
 									c.println("Thank You for playing!");
 									c.println("Do you want to play again?   (Y/N)");
 									again = c.readString();
+									while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+										c.println("That is not a valid response.");
+										c.println("Thank You for playing!");
+										c.println("Do you want to play again?   (Y/N)");
+										again = c.readString();
+									}
 									if (again.equalsIgnoreCase("y")) {
 										play = true;
 										c.clear();
@@ -554,6 +790,11 @@ public class Version1 {
 						else if (where2.equalsIgnoreCase("l")) {
 							c.println("You find a lockpick at the bottom of a bookshelf. Do you pick it up? (Y/N)");
 							pickup = c.readString();
+							while (!pickup.equalsIgnoreCase("y")&&!pickup.equalsIgnoreCase("n")) {
+								c.println("That is not a valid response.");
+								c.println("You find a lockpick at the bottom of a bookshelf. Do you pick it up? (Y/N)");
+								pickup = c.readString();
+							}
 							if (pickup.equalsIgnoreCase("y")) {
 								c.println("As you pick up the lock pick, you see a trap door under the bed and inspect it.");
 								int [] combo = {a, b, d, e, f};
@@ -581,6 +822,12 @@ public class Version1 {
 											c.println("Thank You for playing!");
 											c.println("Do you want to play again?   (Y/N)");
 											again = c.readString();
+											while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+												c.println("That is not a valid response.");
+												c.println("Thank You for playing!");
+												c.println("Do you want to play again?   (Y/N)");
+												again = c.readString();
+											}
 											if (again.equalsIgnoreCase("y")) {
 												play = true;
 												c.clear();
@@ -588,23 +835,33 @@ public class Version1 {
 											else if (again.equalsIgnoreCase("n")) {
 												play = false;
 											}
-										
+
+										}
 									}
-								}
-									
-								
+
+
 									if (answer.equalsIgnoreCase(bobby)){
 										c.println("The door opens.");
 										c.println("The room goes black. Your eyes open. People are around you.");
 										c.println("You hear a man exclaim 'Its a miracle!'");
 										c.println("What do you say? A:Where am I? or B:What happened...(A/B) ");
 										talk1=c.readString();
+										while (!talk1.equalsIgnoreCase("a")&&!talk1.equalsIgnoreCase("a")) {
+											c.println("That is not a valid response.");
+											c.println("What do you say? A:Where am I? or B:What happened...(A/B) ");
+											talk1=c.readString();
+										}
 
 
 										if(talk1.equalsIgnoreCase("A")){
 											c.println("Man: You are in the Mississauga Central Hospital");
 											c.println("C: Will I be alright? D: Did you find the shooter? (C/D)");
 											talk2=c.readString();
+											while (!talk2.equalsIgnoreCase("c")&&!talk2.equalsIgnoreCase("d")) {
+												c.println("That is not a valid response.");
+												c.println("C: Will I be alright? D: Did you find the shooter? (C/D)");
+												talk2=c.readString();
+											}
 											if(talk2.equalsIgnoreCase("C")) {
 												c.println("Man: Yes, but you won't be able to walk normally ever again.");
 												c.println("After you leave the hospital, you go home and eat a shawarma and burrito.");
@@ -629,6 +886,12 @@ public class Version1 {
 												c.println("Thank You for playing!");
 												c.println("Do you want to play again?   (Y/N)");
 												again = c.readString();
+												while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+													c.println("That is not a valid response.");
+													c.println("Thank You for playing!");
+													c.println("Do you want to play again?   (Y/N)");
+													again = c.readString();
+												}
 												if (again.equalsIgnoreCase("y")) {
 													play = true;
 													c.clear();
@@ -646,6 +909,12 @@ public class Version1 {
 											c.println("Thank You for playing!");
 											c.println("Do you want to play again?   (Y/N)");
 											again = c.readString();
+											while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+												c.println("That is not a valid response.");
+												c.println("Thank You for playing!");
+												c.println("Do you want to play again?   (Y/N)");
+												again = c.readString();
+											}
 											if (again.equalsIgnoreCase("y")) {
 												play = true;
 												c.clear();
@@ -658,6 +927,12 @@ public class Version1 {
 												c.println("Thank You for playing!");
 												c.println("Do you want to play again?   (Y/N)");
 												again = c.readString();
+												while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+													c.println("That is not a valid response.");
+													c.println("Thank You for playing!");
+													c.println("Do you want to play again?   (Y/N)");
+													again = c.readString();
+												}
 												if (again.equalsIgnoreCase("y")) {
 													c.clear();
 													play = true;
@@ -679,6 +954,12 @@ public class Version1 {
 								c.println("Thank You for playing!");
 								c.println("Do you want to play again?   (Y/N)");
 								again = c.readString();
+								while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+									c.println("That is not a valid response.");
+									c.println("Thank You for playing!");
+									c.println("Do you want to play again?   (Y/N)");
+									again = c.readString();
+								}
 								if (again.equalsIgnoreCase("y")) {
 									play = true;
 									c.clear();
@@ -692,6 +973,12 @@ public class Version1 {
 								c.println("Thank You for playing!");
 								c.println("Do you want to play again?   (Y/N)");
 								again = c.readString();
+								while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+									c.println("That is not a valid response.");
+									c.println("Thank You for playing!");
+									c.println("Do you want to play again?   (Y/N)");
+									again = c.readString();
+								}
 								if (again.equalsIgnoreCase("y")) {
 									c.clear();
 									play = true;
@@ -706,6 +993,12 @@ public class Version1 {
 							c.println("Thank You for playing!");
 							c.println("Do you want to play again?   (Y/N)");
 							again = c.readString();
+							while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+								c.println("That is not a valid response.");
+								c.println("Thank You for playing!");
+								c.println("Do you want to play again?   (Y/N)");
+								again = c.readString();
+							}
 							if (again.equalsIgnoreCase("y")) {
 								play = true;
 								c.clear();
@@ -719,6 +1012,12 @@ public class Version1 {
 							c.println("Thank You for playing!");
 							c.println("Do you want to play again?   (Y/N)");
 							again = c.readString();
+							while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+								c.println("That is not a valid response.");
+								c.println("Thank You for playing!");
+								c.println("Do you want to play again?   (Y/N)");
+								again = c.readString();
+							}
 							if (again.equalsIgnoreCase("y")) {
 								c.clear();
 								play = true;
@@ -737,6 +1036,12 @@ public class Version1 {
 						c.println("Thank You for playing!");
 						c.println("Do you want to play again?   (Y/N)");
 						again = c.readString();
+						while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+							c.println("That is not a valid response.");
+							c.println("Thank You for playing!");
+							c.println("Do you want to play again?   (Y/N)");
+							again = c.readString();
+						}
 						if (again.equalsIgnoreCase("y")) {
 							c.clear();
 							play = true;
@@ -750,6 +1055,12 @@ public class Version1 {
 						c.println("Thank You for playing!");
 						c.println("Do you want to play again?   (Y/N)");
 						again = c.readString();
+						while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+							c.println("That is not a valid response.");
+							c.println("Thank You for playing!");
+							c.println("Do you want to play again?   (Y/N)");
+							again = c.readString();
+						}
 						if (again.equalsIgnoreCase("y")) {
 							c.clear();
 							play = true;
@@ -765,10 +1076,17 @@ public class Version1 {
 
 				}
 				else if (bed.equalsIgnoreCase("n")) {
-					c.println("You fall into an eternal slumber...");
+					c.println("You hear a voice, 'Let's take him off life support! Mwahahahahahahah!'");
+					c.println("You feel a sharp pain and DIE!");
 					c.println("Thank You for playing!");
 					c.println("Do you want to play again?   (Y/N)");
 					again = c.readString();
+					while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+						c.println("That is not a valid response.");
+						c.println("Thank You for playing!");
+						c.println("Do you want to play again?   (Y/N)");
+						again = c.readString();
+					}
 					if (again.equalsIgnoreCase("y")) {
 						c.clear();
 						play = true;
@@ -782,6 +1100,12 @@ public class Version1 {
 					c.println("Thank You for playing!");
 					c.println("Do you want to play again?   (Y/N)");
 					again = c.readString();
+					while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+						c.println("That is not a valid response.");
+						c.println("Thank You for playing!");
+						c.println("Do you want to play again?   (Y/N)");
+						again = c.readString();
+					}
 					if (again.equalsIgnoreCase("y")) {
 						c.clear();
 						play = true;
@@ -798,6 +1122,12 @@ public class Version1 {
 				c.println("Thank You for playing!");
 				c.println("Do you want to play again?   (Y/N)");
 				again = c.readString();
+				while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+					c.println("That is not a valid response.");
+					c.println("Thank You for playing!");
+					c.println("Do you want to play again?   (Y/N)");
+					again = c.readString();
+				}
 				if (again.equalsIgnoreCase("y")) {
 					c.clear();
 					play = true;
@@ -812,11 +1142,3 @@ public class Version1 {
 	}
 
 }
-
-
-
-
-
-
-
-
