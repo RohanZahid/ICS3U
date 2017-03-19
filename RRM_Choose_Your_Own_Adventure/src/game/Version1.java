@@ -1,4 +1,10 @@
 package game;
+/**
+ * Version1.java
+ * A Choose Your Own Adventure Game.
+ * March 18, 2017
+ * @author Rohan Zahid, Rodrigo Noriega, Matthew Seftel
+ */
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -10,12 +16,11 @@ import hsa_new.Console;
 import java.io.File;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
 public class Version1 {
 
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws InterruptedException, IOException {
-		String item, playGame, action, choice, evidence, license = null, decision, weapon, revenge, bed, where1, where2, talk1, talk2, pickup, again = null;
+		String item, playGame, action, evidence, license = null, decision, weapon, revenge, bed, where1, where2, talk1, talk2, pickup, again = null;
 		String answer = null;
 		String passCode = "2";
 		int f = 0;
@@ -24,7 +29,7 @@ public class Version1 {
 		int b = 0;
 		int a = 0;
 		int s = 0;
-
+		int w = 0;
 		boolean play = true; 
 		Console c = new Console(29,65);
 		do
@@ -57,7 +62,6 @@ public class Version1 {
 				e1.printStackTrace();
 			}
 			c.setTextBackgroundColor(Color.black);
-			//c.setColor(Color.BLACK);
 			c.setTextColor(Color.white);
 			c.clear();
 			Thread thread1 = new Thread() {
@@ -283,7 +287,7 @@ public class Version1 {
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-				c.println("Suddenly, a man with a gun enters to rob the store and ");
+				c.println("Suddenly, a man with a gun enters to rob the store and");
 				c.println("shoots your friend!" );
 				try {
 					jpgImage = ImageIO.read(new File ("resources/store_shooting.jpg"));
@@ -345,7 +349,8 @@ public class Version1 {
 								if (s == 0) {
 									c.clear();
 									c.drawImage (jpgImage, 0, 60, 500, 500, null);
-									c.println("You are getting depressed... Do you want to get revenge, now? (Y/N)");
+									c.println("You are getting depressed... Do you want to get revenge, now?");
+									c.println("(Y/N)");
 									try {
 										Clip theme = AudioSystem.getClip();
 										theme.open(AudioSystem.getAudioInputStream(new File("resources/weirdscreaming.wav"))); //open the given file for the clip
@@ -358,7 +363,8 @@ public class Version1 {
 									while (!revenge.equalsIgnoreCase("y")&&!revenge.equalsIgnoreCase("n")) {
 										c.clear();
 										c.drawImage (jpgImage, 0, 60, 500, 500, null);
-										c.println("You are getting depressed... Do you want to get revenge, now? (Y/N)");
+										c.println("You are getting depressed... Do you want to get revenge, now?");
+										c.println("(Y/N)");
 										revenge = c.readString();
 										
 									
@@ -369,7 +375,7 @@ public class Version1 {
 								}
 								else if (s==1) {
 									c.clear();
-									c.println("You get depressed to the point of no return... and commit suicide.");
+									c.println("You get depressed to the point of no return...and commit suicide.");
 									try {
 										jpgImage = ImageIO.read(new File ("resources/sad.jpg"));
 									} catch (IOException e1) {
@@ -413,13 +419,16 @@ public class Version1 {
 								c.clear();
 								c.drawImage (gifImage, 0, 80, 500, 500, null);
 								c.println("That is not a valid response.");
-								c.println("Do you look for the evidence in the garbage or at the shooting site? (garbage/site)");
+								c.println("Do you look for the evidence in the garbage or at the shooting ");
+								c.println("site? (garbage/site)");
 								evidence = c.readString();
 							}
 							if (evidence.equalsIgnoreCase("garbage")) {
 								c.clear();
-								c.println("You do not find anything important. There is a half-eaten cheeseburger though...");
-								c.println("You then go to the shooting site and find the driver's licence of the shooter.");
+								c.println("You do not find anything important. There is a half-eaten");
+								c.println("cheeseburger though...");
+								c.println("You then go to the shooting site and find the driver's licence of");
+								c.println("the shooter.");
 								try {
 									jpgImage = ImageIO.read(new File ("resources/license.jpg"));
 								} catch (IOException e1) {
@@ -466,7 +475,8 @@ public class Version1 {
 									}
 									if (decision.equalsIgnoreCase("door")) {
 										c.clear();
-										c.println("The back door is open and you enter. You find a gun and a fire extinguisher.");
+										c.println("The back door is open and you enter. You find a gun and a fire");
+										c.println("extinguisher.");
 										c.println("Which do you choose? (gun/extinguisher)");
 										try {
 											jpgImage = ImageIO.read(new File ("resources/weapon.jpg"));
@@ -502,7 +512,8 @@ public class Version1 {
 												e1.printStackTrace();
 											}
 											Thread.sleep(5000);
-											c.println("You hit the shooter on the head with the fire extinguisher, and  he gets knocked out.");
+											c.println("You hit the shooter on the head with the fire extinguisher, and");
+											c.println("he gets knocked out.");
 											try {
 												jpgImage = ImageIO.read(new File ("resources/hit.jpg"));
 											} catch (IOException e1) {
@@ -511,7 +522,8 @@ public class Version1 {
 											}
 											c.drawImage (jpgImage, 0, 80, 500, 500, null);
 											Thread.sleep(3000);
-											c.println("The police hear the noise and come inside.They arrest the shooter and  are about to arrest you, but they take the half-eaten ");
+											c.println("The police hear the noise and come inside. They arrest the");
+											c.println("shooter and are about to arrest you, but they take the half-eaten");
 											c.println("cheeseburger instead.");
 											try {
 												Clip theme = AudioSystem.getClip();
@@ -622,7 +634,7 @@ public class Version1 {
 										} catch (Exception e1) {
 											e1.printStackTrace();
 										}
-										c.println("Yes. That is your home. You used to live at your ");
+										c.println("Yes. That is your home. You used to live at your");
 										c.println("friend's place after you were kicked out by your parents.");
 										c.println("Thank You for playing!");
 										
@@ -741,7 +753,8 @@ public class Version1 {
 									if (decision.equalsIgnoreCase("door")) {
 										
 										c.clear();
-										c.println("The back door is open and you enter. You find a gun and a fire extinguisher.");
+										c.println("The back door is open and you enter. You find a gun and a fire");
+										c.println("extinguisher.");
 										c.println("Which do you choose? (gun/extinguisher)");
 										try {
 											jpgImage = ImageIO.read(new File ("resources/weapon.jpg"));
@@ -777,7 +790,8 @@ public class Version1 {
 												e1.printStackTrace();
 											}
 											Thread.sleep(5000);
-											c.println("You hit the shooter on the head with the fire extinguisher, and  he gets knocked out.");
+											c.println("You hit the shooter on the head with the fire extinguisher,");
+											c.println("and he gets knocked out.");
 											try {
 												jpgImage = ImageIO.read(new File ("resources/hit.jpg"));
 											} catch (IOException e1) {
@@ -786,7 +800,8 @@ public class Version1 {
 											}
 											c.drawImage (jpgImage, 0, 80, 500, 500, null);
 											Thread.sleep(3000);
-											c.println("The police hear the noise and come inside.They arrest the shooter and arrest you.");
+											c.println("The police hear the noise and come inside. They arrest the");
+											c.println("shooter and arrest you.");
 											try {
 												jpgImage = ImageIO.read(new File ("resources/arrested2.jpg"));
 											} catch (IOException e1) {
@@ -998,9 +1013,11 @@ public class Version1 {
 							// TODO Auto-generated catch block
 							e14.printStackTrace();
 						}
+						c.clear();
 						c.drawImage (jpgImage, 0, 60, 500, 500, null);
 						c.println("Your friend is rushed to the hospital and survives. The criminal is apprehended.");
-						c.println("You both live the rest of your lives content with knowing that the robber is in prison.");
+						c.println("You both live the rest of your lives content with knowing that");
+						c.println("the robber is in prison.");
 						try {
 							Clip theme = AudioSystem.getClip();
 							theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //open the given file for the clip
@@ -1042,7 +1059,8 @@ public class Version1 {
 					}
 					c.drawImage (jpgImage, 0, 60, 500, 500, null);
 					c.println("Your friend miraculously survives!");
-					c.println("However, the robber is never caught and both of you eventually forget about the incident.");
+					c.println("However, the robber is never caught and both of you eventually");
+					c.println("forget about the incident.");
 					try {
 						Clip theme = AudioSystem.getClip();
 						theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //open the given file for the clip
@@ -1077,7 +1095,8 @@ public class Version1 {
 
 			else if (item.equalsIgnoreCase("food")) {
 				c.clear();
-				c.println("As you go to get food, a masked burgular enters the store and shoots everyone.");
+				c.println("As you go to get food, a masked burgular enters the store and");
+				c.println("shoots everyone.");
 				try {
 					Clip theme = AudioSystem.getClip();
 					theme.open(AudioSystem.getAudioInputStream(new File("resources/bonesaw.wav"))); //open the given file for the clip
@@ -1182,7 +1201,7 @@ public class Version1 {
 					}
 					if (where1.equalsIgnoreCase("f")) {
 						c.clear();
-						c.println("While you are walking forward, your foot touches something. ");
+						c.println("While you are walking forward, your foot touches something.");
 						c.println("You pick it up and push the button on it.");
 						c.println("It is a flashlight!");
 						try {
@@ -1238,37 +1257,30 @@ public class Version1 {
 							answer = c.readString();
 							int x = (int)(Math.random() *10) + 1;
 							while (!answer.equalsIgnoreCase(passCode)) {
-								for (s =0; s<2; s++)
-								{
+								for (s=0;s<3;s++) {
 									if (s == 0) {
 										c.clear();
-										c.drawImage (jpgImage, 0, 80, 500, 500, null);
-										c.println("You have 2 more chances.");
+										c.drawImage (jpgImage, 0, 60, 500, 500, null);
+										c.println("You have two more chances.");
 										c.println("Enter the following: " + passCode);
 										answer = c.readString();
 										if (answer.equalsIgnoreCase(passCode)) {
-											s = 5;
+											w=5;
+											s=8;
 										}
 									}
-									else if (s == 1) {
+									else if (s==1) {
 										c.clear();
-										c.drawImage (jpgImage, 0, 80, 500, 500, null);
-										c.println("You have one last chance.");
+										c.drawImage (jpgImage, 0, 60, 500, 500, null);
+										c.println("You have one more chance.");
 										c.println("Enter the following: " + passCode);
 										answer = c.readString();
 										if (answer.equalsIgnoreCase(passCode)) {
-											s = 5;
+											w=5;
+											s=8;
 										}
 									}
-									else if (s == 2) {
-										c.clear();
-										try {
-											jpgImage = ImageIO.read(new File ("resources/sad.jpg"));
-										} catch (IOException e14) {
-											// TODO Auto-generated catch block
-											e14.printStackTrace();
-										}
-										c.drawImage (jpgImage, 0, 80, 500, 500, null);
+									else if (s==2) {
 										c.println("You get depressed to the point of no return... and DIE!");
 										try {
 											Clip theme = AudioSystem.getClip();
@@ -1278,26 +1290,27 @@ public class Version1 {
 										} catch (Exception e1) {
 											e1.printStackTrace();
 										}
-										c.println("Thank You for playing!");
-										c.println("Do you want to play again?   (Y/N)");
-										again = c.readString();
-										while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
-											c.clear();
-											c.drawImage (jpgImage, 0, 80, 500, 500, null);
-											c.println("That is not a valid response.");
-											c.println("Thank You for playing!");
-											c.println("Do you want to play again?   (Y/N)");
-											again = c.readString();
-										}
-										if (again.equalsIgnoreCase("y")) {
-											play = true;
-											c.clear();
-										}
-										else if (again.equalsIgnoreCase("n")) {
-											play = false;
-										}
+										answer = passCode;
+										s = 6;
+										w = 3;
 									}
+									
 								}
+								if (w==5) {
+									answer = passCode;
+								}
+							}
+							if (s==6) {
+								answer = "hfjkdhaskhdkf";
+							}
+							else if (w==5) {
+								answer = passCode;
+							}
+							else if (w==3) {
+								answer = "hfjkdhaskhdkf";
+							}
+							if (s==8) {
+								answer = passCode;
 							}
 							if (x == 1 ||x == 2||x == 3||x == 4||x == 5) {
 								c.clear();
@@ -1393,8 +1406,10 @@ public class Version1 {
 									if(talk2.equalsIgnoreCase("C")) {
 										c.clear();
 										c.drawImage (jpgImage, 0, 80, 500, 500, null);
-										c.println("Man: Yes, you will be able to leave the hospital after 3 weeks of physiotherapy.");
-										c.println("After you leave the hospital, you meet with your friend and discuss what happened.");
+										c.println("Man: Yes, you will be able to leave the hospital after 3 weeks of");
+										c.println("physiotherapy.");
+										c.println("After you leave the hospital, you meet with your friend and");
+										c.println("discuss what happened.");
 										Thread.sleep(5000);
 										c.clear();
 										c.println("Unfortunately the shooter was never caught...");
@@ -1438,10 +1453,14 @@ public class Version1 {
 									else if(talk2.equalsIgnoreCase("D")) {
 										c.clear();
 										c.drawImage (jpgImage, 0, 80, 500, 500, null);
-										c.println("Man: I am pleased to announce the shooter has been apprehended by the police.");
+										c.println("Man: I am pleased to announce the shooter has been apprehended by");
+										c.println("the police.");
 										c.println("Man: He was found hiding out in a dumpster.");
+										Thread.sleep(3000);
+										c.clear();
+										c.drawImage (jpgImage, 0, 80, 500, 500, null);
 										c.println("Man: The shooter will serve the maximum sentence of");
-										c.println(" in Kingston penitentiary.");
+										c.println("25 years in the Kingston penitentiary.");
 										try {
 											jpgImage = ImageIO.read(new File ("resources/questover.jpg"));
 										} catch (IOException e14) {
@@ -1491,7 +1510,8 @@ public class Version1 {
 										e14.printStackTrace();
 									}
 									c.drawImage (jpgImage, 0, 80, 500, 500, null);
-									c.println("Man: You and your friend were shot and then brought to the hospital");
+									c.println("Man: You and your friend were shot and then brought to the");
+									c.println("hospital.");
 									c.println("Man: You need to stay here until you are both healthy again.");
 									Thread.sleep(5000);
 									c.clear();
@@ -1535,8 +1555,41 @@ public class Version1 {
 								}
 							}
 							else{
+								try {
+									jpgImage = ImageIO.read(new File ("resources/sad.jpg"));
+								} catch (IOException e14) {
+									// TODO Auto-generated catch block
+									e14.printStackTrace();
+								}
 								c.clear();
-								c.println("wrong.");
+								c.println("You get depressed to the point of no return... and DIE!");
+								c.drawImage (jpgImage, 0, 80, 500, 500, null);
+								try {
+									Clip theme = AudioSystem.getClip();
+									theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //open the given file for the clip
+									theme.start();
+									
+								} catch (Exception e1) {
+									e1.printStackTrace();
+								}
+								c.println("Thank You for playing!");
+								c.println("Do you want to play again?   (Y/N)");
+								again = c.readString();
+								while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+									c.clear();
+									c.drawImage (jpgImage, 0, 80, 500, 500, null);
+									c.println("That is not a valid response.");
+									c.println("Thank You for playing!");
+									c.println("Do you want to play again?   (Y/N)");
+									again = c.readString();
+								}
+								if (again.equalsIgnoreCase("y")) {
+									play = true;
+									c.clear();
+								}
+								else if (again.equalsIgnoreCase("n")) {
+									play = false;
+								}
 							}
 
 						}
@@ -1560,7 +1613,8 @@ public class Version1 {
 							}
 							if (pickup.equalsIgnoreCase("y")) {
 								c.clear();
-								c.println("As you pick up the lock pick, you see a trap door under the bed and inspect it.");
+								c.println("As you pick up the lock pick, you see a trap door under the bed");
+								c.println("and inspect it.");
 								try {
 									jpgImage = ImageIO.read(new File ("resources/trapdoor.jpg"));
 								} catch (IOException e14) {
@@ -1576,31 +1630,31 @@ public class Version1 {
 								c.println("Enter the following: " + passCode);
 								answer = c.readString();
 								while (!answer.equalsIgnoreCase(passCode)) {
-									for (s =0; s<2; s++)
-									{
+									for (s=0;s<3;s++) {
 										if (s == 0) {
 											c.clear();
-											c.drawImage (jpgImage, 0, 80, 500, 500, null);
-											c.println("You have 2 more chances.");
+											c.drawImage (jpgImage, 0, 60, 500, 500, null);
+											c.println("You have two more chances.");
 											c.println("Enter the following: " + passCode);
 											answer = c.readString();
-										}
-										else if (s == 1) {
-											c.clear();
-											c.drawImage (jpgImage, 0, 80, 500, 500, null);
-											c.println("You have one last chance.");
-											c.println("Enter the following: " + passCode);
-											answer = c.readString();
-										}
-										else if (s == 2) {
-											c.clear();
-											c.println("You get depressed to the point of no return... and DIE!.");
-											try {
-												jpgImage = ImageIO.read(new File ("resources/sad.jpg"));
-											} catch (IOException e14) {
-												// TODO Auto-generated catch block
-												e14.printStackTrace();
+											if (answer.equalsIgnoreCase(passCode)) {
+												w=5;
+												s=8;
 											}
+										}
+										else if (s==1) {
+											c.clear();
+											c.drawImage (jpgImage, 0, 60, 500, 500, null);
+											c.println("You have one more chance.");
+											c.println("Enter the following: " + passCode);
+											answer = c.readString();
+											if (answer.equalsIgnoreCase(passCode)) {
+												w=5;
+												s=8;
+											}
+										}
+										else if (s==2) {
+											c.println("You get depressed to the point of no return... and DIE!");
 											try {
 												Clip theme = AudioSystem.getClip();
 												theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //open the given file for the clip
@@ -1609,33 +1663,29 @@ public class Version1 {
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
-											c.drawImage (jpgImage, 0, 80, 500, 500, null);
-											Thread.sleep(5000);
-											c.clear();
-											c.drawImage (jpgImage, 0, 80, 500, 500, null);
-											c.println("Thank You for playing!");
-											c.println("Do you want to play again?   (Y/N)");
-											again = c.readString();
-											while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
-												c.clear();
-												c.drawImage (jpgImage, 0, 80, 500, 500, null);
-												c.println("That is not a valid response.");
-												c.println("Thank You for playing!");
-												c.println("Do you want to play again?   (Y/N)");
-												again = c.readString();
-											}
-											if (again.equalsIgnoreCase("y")) {
-												play = true;
-												c.clear();
-											}
-											else if (again.equalsIgnoreCase("n")) {
-												play = false;
-											}
-
+											answer = passCode;
+											s = 6;
+											w = 3;
 										}
+										
+									}
+									if (w==5) {
+										answer = passCode;
 									}
 								}
-
+								if (s==6) {
+									answer = "hfjkdhaskhdkf";
+								}
+								else if (w==5) {
+									answer = passCode;
+								}
+								else if (w==3) {
+									answer = "hfjkdhaskhdkf";
+								}
+								if (s==8) {
+									answer = passCode;
+								}
+								
 									if (answer.equalsIgnoreCase(passCode)){
 										c.clear();
 										try {
@@ -1770,7 +1820,8 @@ public class Version1 {
 										}
 										else if(talk1.equalsIgnoreCase("B")) { 
 											c.clear();
-											c.println("Man: You and your friend were shot and then brought to the hospital");
+											c.println("Man: You and your friend were shot and then brought to the");
+											c.println("hospital.");
 											c.println("Man: You need to stay here until you are both rejuvenated.");
 											try {
 												jpgImage = ImageIO.read(new File ("resources/hospital.jpg"));
@@ -1819,15 +1870,50 @@ public class Version1 {
 											}
 										}
 									}
-									else {
-										c.println("wrong.");
+									else{
+										try {
+											jpgImage = ImageIO.read(new File ("resources/sad.jpg"));
+										} catch (IOException e14) {
+											// TODO Auto-generated catch block
+											e14.printStackTrace();
+										}
+										c.clear();
+										c.println("You get depressed to the point of no return... and DIE!");
+										c.drawImage (jpgImage, 0, 80, 500, 500, null);
+										try {
+											Clip theme = AudioSystem.getClip();
+											theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //open the given file for the clip
+											theme.start();
+											
+										} catch (Exception e1) {
+											e1.printStackTrace();
+										}
+										c.println("Thank You for playing!");
+										c.println("Do you want to play again?   (Y/N)");
+										again = c.readString();
+										while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+											c.clear();
+											c.drawImage (jpgImage, 0, 80, 500, 500, null);
+											c.println("That is not a valid response.");
+											c.println("Thank You for playing!");
+											c.println("Do you want to play again?   (Y/N)");
+											again = c.readString();
+										}
+										if (again.equalsIgnoreCase("y")) {
+											play = true;
+											c.clear();
+										}
+										else if (again.equalsIgnoreCase("n")) {
+											play = false;
+										}
 									}
 
 								
 							}
 							else if (pickup.equalsIgnoreCase("n")) {
 								c.clear();
-								c.println("As you move away from the bookshelf, you fall into the pit and DIE!");
+								c.println("As you move away from the bookshelf, you fall into the pit and");
+								c.println("DIE!");
 								try {
 									jpgImage = ImageIO.read(new File ("resources/fall.jpg"));
 								} catch (IOException e14) {
