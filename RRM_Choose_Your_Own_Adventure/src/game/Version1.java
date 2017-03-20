@@ -20,9 +20,14 @@ public class Version1 {
 
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws InterruptedException, IOException {
-		String item, playGame, action, evidence, license = null, decision, weapon, revenge, bed, where1, where2, talk1, talk2, pickup, again = null;
+		String item, playGame, action, evidence, license = null, decision, weapon, revenge, bed, where1, where2, talk1, talk2, pickUp, again = null;
 		String answer = null;
 		String passCode = "2";
+		// item =what you choose at the beginning of the game, action =if you choose to help or call, evidence =where you choose to search for evidence
+		// license =what you choose to do with the found drivers license, decision = player chooses either to quit or enter the house
+		// weapon=the option to choose the gun or extinguisher, revenge =choosing whether to get revenge for your friend's death
+		// bed = the option to stay or get out of bed, where1 = choosing to go left,right or forward, where2= choosing the backpack,bookshelf or the pit
+		// talk1 = choosing your line of dialogue, talk2 =choosing your second line of dialogue,pickUp= picking up the lock-pick, again = choosing to play again  
 		int f = 0;
 		int e = 0;
 		int d = 0;
@@ -35,24 +40,22 @@ public class Version1 {
 		do
 		{
 			passCode = "2"; //resets the passCode
-			s = 0;
+			s = 0; // resets the counter
 			Thread MUSIC = new Thread() {
 				public void run() {
 					try {
 						Clip theme = AudioSystem.getClip(); //create the clip object
-						theme.open(AudioSystem.getAudioInputStream(new File("resources/opening2.wav"))); //open the given file for the clip
-							theme.start();
-							//theme.loop(Clip.LOOP_CONTINUOUSLY);
-							Thread.sleep(5000);
-							theme.stop();
-						
-						
+						theme.open(AudioSystem.getAudioInputStream(new File("resources/opening2.wav"))); //opens the given file for the clip
+						theme.start();
+						Thread.sleep(5000);
+						theme.stop();
+
+
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
 				}
-				};
-				// finish this 
+			};
 			BufferedImage jpgImage = null;
 			BufferedImage gifImage = null;
 			try {
@@ -65,12 +68,11 @@ public class Version1 {
 			c.setTextBackgroundColor(Color.black);
 			c.setTextColor(Color.white);
 			c.clear();
-			// finish this
 			Thread thread1 = new Thread() {
 				public void run() {
 					while (true) {
 						BufferedImage jpgImage = null;
-						
+
 						try {
 							jpgImage = ImageIO.read(new File("resources/titlescreen1.jpg"));
 						} catch (IOException e1) {
@@ -94,10 +96,10 @@ public class Version1 {
 					}
 				}
 			};
-			
+
 			thread1.start();
 			MUSIC.start();
-			
+
 			playGame = c.readLine();
 			while (!playGame.equalsIgnoreCase("start")) { //If "start" is not typed, the game will not start until it is.
 				c.clear();
@@ -128,7 +130,7 @@ public class Version1 {
 			c.clear();
 			c.println("You and your friend walk into a convenience store.");
 			c.println("Do you buy food or a drink? (food/drink)");
-
+			//animates separate images
 			Thread thread2 = new Thread() {
 				public void run() {
 					while (true) {
@@ -245,7 +247,7 @@ public class Version1 {
 							e.printStackTrace();
 						}
 						c.drawImage (gifImage, 0, 60, 500, 500, null);
-						
+
 					}
 				}
 			};
@@ -269,26 +271,26 @@ public class Version1 {
 				c.println("You go to the back to get a drink.");
 				try {
 					Clip theme = AudioSystem.getClip();
-					theme.open(AudioSystem.getAudioInputStream(new File("resources/bonesaw.wav"))); //open the given file for the clip
+					theme.open(AudioSystem.getAudioInputStream(new File("resources/bonesaw.wav"))); //opens the given file for the clip
 					theme.start();
-					
+
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 				Thread.sleep(3000);
 				try {
 					Clip theme = AudioSystem.getClip();
-					theme.open(AudioSystem.getAudioInputStream(new File("resources/gun.wav"))); //open the given file for the clip
+					theme.open(AudioSystem.getAudioInputStream(new File("resources/gun.wav"))); //opens the given file for the clip
 					theme.start();
-					
+
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 				try {
 					Clip theme = AudioSystem.getClip();
-					theme.open(AudioSystem.getAudioInputStream(new File("resources/dead.wav"))); //open the given file for the clip
+					theme.open(AudioSystem.getAudioInputStream(new File("resources/dead.wav"))); //opens the given file for the clip
 					theme.start();
-					
+
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -314,7 +316,7 @@ public class Version1 {
 					c.println("police? (help/call)");
 					action = c.readString();
 				}
-				// If awnser is invalid this message show up again
+				// If answer is invalid this message show up again
 				if (action.equalsIgnoreCase("call")) {
 					int x = (int)(Math.random() *10) + 1;
 					if (x == 1 ||x == 2||x == 3||x == 4||x == 5||x == 6||x == 7||x == 8||x == 9) {
@@ -331,9 +333,10 @@ public class Version1 {
 						c.println("You are brimming with RAGE. Do you want to get REVENGE?! (Y/N)");
 						try {
 							Clip theme = AudioSystem.getClip();
-							theme.open(AudioSystem.getAudioInputStream(new File("resources/weirdscreaming.wav"))); //open the given file for the clip
+							theme.open(AudioSystem.getAudioInputStream(new File("resources/weirdscreaming.wav"))); //opens the given file for the clip
 							theme.start();
 							
+
 						} catch (Exception e1) {
 							e1.printStackTrace();
 						}
@@ -343,14 +346,6 @@ public class Version1 {
 							c.drawImage (jpgImage, 0, 60, 500, 500, null);
 							c.println("That is not a valid response.");
 							c.println("You are brimming with RAGE. Do you want to get REVENGE?! (Y/N)");
-							try {
-								Clip theme = AudioSystem.getClip();
-								theme.open(AudioSystem.getAudioInputStream(new File("resources/weirdscreaming.wav"))); //open the given file for the clip
-								theme.start();
-								
-							} catch (Exception e1) {
-								e1.printStackTrace();
-							}
 							revenge = c.readString();
 						}
 						// If you input an invalid response the beginning question is repeated
@@ -361,14 +356,6 @@ public class Version1 {
 									c.drawImage (jpgImage, 0, 60, 500, 500, null);
 									c.println("You are getting depressed... Do you want to get revenge, now?");
 									c.println("(Y/N)");
-									try {
-										Clip theme = AudioSystem.getClip();
-										theme.open(AudioSystem.getAudioInputStream(new File("resources/weirdscreaming.wav"))); //open the given file for the clip
-										theme.start();
-										
-									} catch (Exception e1) {
-										e1.printStackTrace();
-									}
 									revenge = c.readString();
 									while (!revenge.equalsIgnoreCase("y")&&!revenge.equalsIgnoreCase("n")) {
 										c.clear();
@@ -376,10 +363,10 @@ public class Version1 {
 										c.println("You are getting depressed... Do you want to get revenge, now?");
 										c.println("(Y/N)");
 										revenge = c.readString();
-										
-									
-								}
-								// If you answer no, the question is re asked 
+
+
+									}
+									// If you answer no, the question is asked again 
 									if (revenge.equalsIgnoreCase("y")) {
 										s=5;
 									}
@@ -396,9 +383,9 @@ public class Version1 {
 									c.drawImage (jpgImage, 0, 60, 500, 500, null);
 									try {
 										Clip theme = AudioSystem.getClip();
-										theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //open the given file for the clip
+										theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //opens the given file for the clip
 										theme.start();
-										
+
 									} catch (Exception e1) {
 										e1.printStackTrace();
 									}
@@ -406,7 +393,7 @@ public class Version1 {
 								else {
 									revenge = "dw";
 								}
-								// If you choose no revenge you then get the message above and then picutres pop up
+								// If you choose no revenge you then get the message above and then pictures pop up
 							}
 						}
 
@@ -427,7 +414,7 @@ public class Version1 {
 							c.println("Do you look for the evidence in the garbage or at the shooting ");
 							c.println("site? (garbage/site)");
 							evidence = c.readString();
-					
+
 							while (!evidence.equalsIgnoreCase("garbage")&&!evidence.equalsIgnoreCase("site")) {
 								c.clear();
 								c.drawImage (gifImage, 0, 80, 500, 500, null);
@@ -436,7 +423,7 @@ public class Version1 {
 								c.println("site? (garbage/site)");
 								evidence = c.readString();
 							}
-							// If answer for question is invalid, question is re asked
+							// If answer for question is invalid, question is asked again
 							if (evidence.equalsIgnoreCase("garbage")) {
 								c.clear();
 								c.println("You do not find anything important. There is a half-eaten");
@@ -472,9 +459,9 @@ public class Version1 {
 									c.drawImage (jpgImage, 0, 80, 500, 500, null);
 									try {
 										Clip theme = AudioSystem.getClip();
-										theme.open(AudioSystem.getAudioInputStream(new File("resources/siren.wav"))); //open the given file for the clip
+										theme.open(AudioSystem.getAudioInputStream(new File("resources/siren.wav"))); //opens the given file for the clip
 										theme.start();
-										
+
 									} catch (Exception e1) {
 										e1.printStackTrace();
 									}
@@ -489,7 +476,7 @@ public class Version1 {
 										c.println("Do you give up or go through the back door? (quit/door)");
 										decision = c.readString();
 									}
-									// If answer is invaild this message pops up
+									// If answer is invalid this message pops up
 									if (decision.equalsIgnoreCase("door")) {
 										c.clear();
 										c.println("The back door is open and you enter. You find a gun and a fire");
@@ -511,22 +498,22 @@ public class Version1 {
 											c.println("Which do you choose? (gun/extinguisher)");
 											weapon = c.readString();
 										}
-										// If answer is invaild this message pops up
+										// If answer is invalid this message pops up
 										if(weapon.equalsIgnoreCase("extinguisher")) {
 											c.clear();
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming2.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming2.wav"))); //opens the given file for the clip
 												theme.start();
-												
+
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/breaking.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/breaking.wav"))); //opens the given file for the clip
 												theme.start();
-												
+
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
@@ -548,13 +535,13 @@ public class Version1 {
 											c.println("cheeseburger instead.");
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //opens the given file for the clip
 												theme.start();
 												Thread.sleep(5000);
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
-											// sounds are produced
+											// Sounds are produced
 											c.println("Thank You for playing!");
 											c.println("Do you want to play again?   (Y/N)");
 											again = c.readString();
@@ -566,7 +553,7 @@ public class Version1 {
 												c.println("Do you want to play again?   (Y/N)");
 												again = c.readString();
 											}
-											// If question is invaild this message pops up
+											// If question is invalid this message pops up
 											if (again.equalsIgnoreCase("y")) {
 												play = true;
 												c.clear();
@@ -581,25 +568,25 @@ public class Version1 {
 											c.println("You grab the gun, but it's filled with blanks.");
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming3.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming3.wav"))); //opens the given file for the clip
 												theme.start();
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/laugh.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/laugh.wav"))); //opens the given file for the clip
 												theme.start();
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/stab.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/stab.wav"))); //opens the given file for the clip
 												theme.loop(Clip.LOOP_CONTINUOUSLY);
 												Thread.sleep(5000);
 												theme.stop();
-												
+
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
@@ -613,9 +600,9 @@ public class Version1 {
 											c.println("The robber hears you and stabs you to a PAINFUL DEATH!");
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //opens the given file for the clip
 												theme.start();
-												
+
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
@@ -653,10 +640,10 @@ public class Version1 {
 										c.println("You give up and go home.");
 										try {
 											Clip theme = AudioSystem.getClip();
-											theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //open the given file for the clip
+											theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //opens the given file for the clip
 											theme.start();
 											Thread.sleep(5000);
-											
+
 										} catch (Exception e1) {
 											e1.printStackTrace();
 										}
@@ -688,7 +675,7 @@ public class Version1 {
 									c.clear();
 									try {
 										Clip theme = AudioSystem.getClip();
-										theme.open(AudioSystem.getAudioInputStream(new File("resources/handcuffs.wav"))); //open the given file for the clip
+										theme.open(AudioSystem.getAudioInputStream(new File("resources/handcuffs.wav"))); //opens the given file for the clip
 										theme.start();
 									} catch (Exception e1) {
 										e1.printStackTrace();
@@ -702,10 +689,10 @@ public class Version1 {
 									}
 									try {
 										Clip theme = AudioSystem.getClip();
-										theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //open the given file for the clip
+										theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //opens the given file for the clip
 										theme.start();
 										Thread.sleep(5000);
-										
+
 									} catch (Exception e1) {
 										e1.printStackTrace();
 									}
@@ -752,7 +739,7 @@ public class Version1 {
 									c.println("Do you keep the license, or give it to the police?(keep/give)");
 									license = c.readString();
 								}
-								// If answer is invalid this message is pops up
+								// Message pops up if answer is invalid 
 								if (license.equalsIgnoreCase("keep")){
 									c.clear();
 									c.println("You see the address on the license and go there...");
@@ -765,13 +752,13 @@ public class Version1 {
 									c.drawImage (jpgImage, 0, 80, 500, 500, null);
 									try {
 										Clip theme = AudioSystem.getClip();
-										theme.open(AudioSystem.getAudioInputStream(new File("resources/siren.wav"))); //open the given file for the clip
+										theme.open(AudioSystem.getAudioInputStream(new File("resources/siren.wav"))); //opens the given file for the clip
 										theme.start();
-										
+
 									} catch (Exception e1) {
 										e1.printStackTrace();
 									}
-									// Images pop up
+									// image and sound pop up
 									c.println("When you get there, the police are outside the residence.");
 									c.println("Do you give up or go through the back door? (quit/door)");
 									decision = c.readString();
@@ -783,7 +770,7 @@ public class Version1 {
 										decision = c.readString();
 									}
 									if (decision.equalsIgnoreCase("door")) {
-										
+
 										c.clear();
 										c.println("The back door is open and you enter. You find a gun and a fire");
 										c.println("extinguisher.");
@@ -807,17 +794,17 @@ public class Version1 {
 											c.clear();
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming2.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming2.wav"))); //opens the given file for the clip
 												theme.start();
-												
+
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/breaking.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/breaking.wav"))); //opens the given file for the clip
 												theme.start();
-												
+
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
@@ -842,10 +829,10 @@ public class Version1 {
 											}
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //opens the given file for the clip
 												theme.start();
 												Thread.sleep(5000);
-												
+
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
@@ -869,31 +856,31 @@ public class Version1 {
 												play = false;
 											}
 										}
-										// you knock out the robber and then the game either ends or starts over, images also pop up
+										// robber is knocked out and then the game either ends or starts over, images also pop up
 										else if (weapon.equalsIgnoreCase("gun")){
 											c.clear();
 											c.println("You grab the gun, but it's filled with blanks.");
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming3.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming3.wav"))); //opens the given file for the clip
 												theme.start();
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/laugh.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/laugh.wav"))); //opens the given file for the clip
 												theme.start();
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/stab.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/stab.wav"))); //opens the given file for the clip
 												theme.loop(Clip.LOOP_CONTINUOUSLY);
 												Thread.sleep(5000);
 												theme.stop();
-												
+
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
@@ -907,10 +894,10 @@ public class Version1 {
 											c.println("The robber hears you and stabs you to a PAINFUL DEATH!");
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //opens the given file for the clip
 												theme.start();
 												Thread.sleep(5000);
-												
+
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
@@ -936,7 +923,7 @@ public class Version1 {
 											}
 										}
 									}
-									// You get killed by the robber and the game either ends or starts over, images pop up
+									// Player gets killed by the robber and the game either ends or starts over, images pop up
 									else if (decision.equalsIgnoreCase("quit")){
 										c.clear();
 										c.println("You give up and go home.");
@@ -949,10 +936,10 @@ public class Version1 {
 										c.drawImage (jpgImage, 0, 80, 500, 500, null);
 										try {
 											Clip theme = AudioSystem.getClip();
-											theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //open the given file for the clip
+											theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //opens the given file for the clip
 											theme.start();
 											Thread.sleep(5000);
-											
+
 										} catch (Exception e1) {
 											e1.printStackTrace();
 										}
@@ -978,7 +965,7 @@ public class Version1 {
 										}
 									}
 								}
-								// you give up and go home, sounds are produced and the game either ends or starts over
+								// Player gives up and goes home, sounds are produced, game either ends or starts over
 								else if (license.equalsIgnoreCase("give")) {
 									c.clear();
 									c.println("The cops take the license and find the robber.");
@@ -991,10 +978,10 @@ public class Version1 {
 									c.drawImage (jpgImage, 0, 80, 500, 500, null);
 									try {
 										Clip theme = AudioSystem.getClip();
-										theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //open the given file for the clip
+										theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //opens the given file for the clip
 										theme.start();
 										Thread.sleep(5000);
-										
+
 									} catch (Exception e1) {
 										e1.printStackTrace();
 									}
@@ -1057,10 +1044,10 @@ public class Version1 {
 						c.println("the robber is in prison.");
 						try {
 							Clip theme = AudioSystem.getClip();
-							theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //open the given file for the clip
+							theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //opens the given file for the clip
 							theme.start();
 							Thread.sleep(5000);
-							
+
 						} catch (Exception e1) {
 							e1.printStackTrace();
 						}
@@ -1101,10 +1088,10 @@ public class Version1 {
 					c.println("forget about the incident.");
 					try {
 						Clip theme = AudioSystem.getClip();
-						theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //open the given file for the clip
+						theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //opens the given file for the clip
 						theme.start();
 						Thread.sleep(5000);
-						
+
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
@@ -1137,68 +1124,68 @@ public class Version1 {
 				c.println("shoots everyone.");
 				try {
 					Clip theme = AudioSystem.getClip();
-					theme.open(AudioSystem.getAudioInputStream(new File("resources/bonesaw.wav"))); //open the given file for the clip
+					theme.open(AudioSystem.getAudioInputStream(new File("resources/bonesaw.wav"))); //opens the given file for the clip
 					theme.start();
-					
+
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 				Thread.sleep(3000);
 				try {
 					Clip theme = AudioSystem.getClip();
-					theme.open(AudioSystem.getAudioInputStream(new File("resources/gun.wav"))); //open the given file for the clip
+					theme.open(AudioSystem.getAudioInputStream(new File("resources/gun.wav"))); //opens the given file for the clip
 					theme.start();
-					
+
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 				try {
 					Clip theme = AudioSystem.getClip();
-					theme.open(AudioSystem.getAudioInputStream(new File("resources/dead.wav"))); //open the given file for the clip
+					theme.open(AudioSystem.getAudioInputStream(new File("resources/dead.wav"))); //opens the given file for the clip
 					theme.start();
-					
+
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 				try {
 					Clip theme = AudioSystem.getClip();
-					theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming2.wav"))); //open the given file for the clip
+					theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming2.wav"))); //opens the given file for the clip
 					theme.start();
 					Thread.sleep(2000);
 					theme.stop();
-					
+
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 				try {
 					Clip theme = AudioSystem.getClip();
-					theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming.wav"))); //open the given file for the clip
+					theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming.wav"))); //opens the given file for the clip
 					theme.start();
-					
+
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 				try {
 					Clip theme = AudioSystem.getClip();
-					theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming3.wav"))); //open the given file for the clip
+					theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming3.wav"))); //opens the given file for the clip
 					theme.start();
-					
+
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 				try {
 					Clip theme = AudioSystem.getClip();
-					theme.open(AudioSystem.getAudioInputStream(new File("resources/gun.wav"))); //open the given file for the clip
+					theme.open(AudioSystem.getAudioInputStream(new File("resources/gun.wav"))); //opens the given file for the clip
 					theme.start();
-					
+
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 				try {
 					Clip theme = AudioSystem.getClip();
-					theme.open(AudioSystem.getAudioInputStream(new File("resources/gun.wav"))); //open the given file for the clip
+					theme.open(AudioSystem.getAudioInputStream(new File("resources/gun.wav"))); //opens the given file for the clip
 					theme.start();
-					
+
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -1246,9 +1233,9 @@ public class Version1 {
 						c.println("It is a flashlight!");
 						try {
 							Clip theme = AudioSystem.getClip();
-							theme.open(AudioSystem.getAudioInputStream(new File("resources/opendoor.wav"))); //open the given file for the clip
+							theme.open(AudioSystem.getAudioInputStream(new File("resources/opendoor.wav"))); //opens the given file for the clip
 							theme.start();
-							
+
 						} catch (Exception e1) {
 							e1.printStackTrace();
 						}
@@ -1326,9 +1313,9 @@ public class Version1 {
 										c.println("You get depressed to the point of no return... and DIE!");
 										try {
 											Clip theme = AudioSystem.getClip();
-											theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //open the given file for the clip
+											theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //opens the given file for the clip
 											theme.start();
-											
+
 										} catch (Exception e1) {
 											e1.printStackTrace();
 										}
@@ -1336,7 +1323,7 @@ public class Version1 {
 										s = 6;
 										w = 3;
 									}
-									
+
 								}
 								if (w==5) {
 									answer = passCode;
@@ -1365,9 +1352,9 @@ public class Version1 {
 								c.drawImage (jpgImage, 0, 80, 500, 500, null);
 								try {
 									Clip theme = AudioSystem.getClip();
-									theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming3.wav"))); //open the given file for the clip
+									theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming3.wav"))); //opens the given file for the clip
 									theme.start();
-									
+
 								} catch (Exception e1) {
 									e1.printStackTrace();
 								}
@@ -1375,9 +1362,9 @@ public class Version1 {
 								c.println("Thank You for playing!");
 								try {
 									Clip theme = AudioSystem.getClip();
-									theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //open the given file for the clip
+									theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //opens the given file for the clip
 									theme.start();
-									
+
 								} catch (Exception e1) {
 									e1.printStackTrace();
 								}
@@ -1399,16 +1386,16 @@ public class Version1 {
 								else if (again.equalsIgnoreCase("n")) {
 									play = false;
 								}
-								
+
 							}
 							// Game either ends or starts over
 							else if (answer.equalsIgnoreCase(passCode)){
 								c.clear();
 								try {
 									Clip theme = AudioSystem.getClip();
-									theme.open(AudioSystem.getAudioInputStream(new File("resources/opendoor.wav"))); //open the given file for the clip
+									theme.open(AudioSystem.getAudioInputStream(new File("resources/opendoor.wav"))); //opens the given file for the clip
 									theme.start();
-									
+
 								} catch (Exception e1) {
 									e1.printStackTrace();
 								}
@@ -1464,9 +1451,9 @@ public class Version1 {
 										}
 										try {
 											Clip theme = AudioSystem.getClip();
-											theme.open(AudioSystem.getAudioInputStream(new File("resources/laugh.wav"))); //open the given file for the clip
+											theme.open(AudioSystem.getAudioInputStream(new File("resources/laugh.wav"))); //opens the given file for the clip
 											theme.start();
-											
+
 										} catch (Exception e1) {
 											e1.printStackTrace();
 										}
@@ -1491,8 +1478,8 @@ public class Version1 {
 										}
 
 									}
-				
-									
+
+
 									else if(talk2.equalsIgnoreCase("D")) {
 										c.clear();
 										c.drawImage (jpgImage, 0, 80, 500, 500, null);
@@ -1512,10 +1499,10 @@ public class Version1 {
 										}
 										try {
 											Clip theme = AudioSystem.getClip();
-											theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //open the given file for the clip
+											theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //opens the given file for the clip
 											theme.start();
 											Thread.sleep(5000);
-											
+
 										} catch (Exception e1) {
 											e1.printStackTrace();
 										}
@@ -1564,16 +1551,16 @@ public class Version1 {
 										// TODO Auto-generated catch block
 										e14.printStackTrace();
 									}
-									
+
 									c.drawImage (jpgImage, 0, 80, 500, 500, null);
-									
+
 									c.println("After 3 weeks you and your friend return to your normal lives... of selling drugs.");
 									try {
 										Clip theme = AudioSystem.getClip();
-										theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //open the given file for the clip
+										theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //opens the given file for the clip
 										theme.start();
 										Thread.sleep(5000);
-										
+
 									} catch (Exception e1) {
 										e1.printStackTrace();
 									}
@@ -1609,9 +1596,9 @@ public class Version1 {
 								c.drawImage (jpgImage, 0, 80, 500, 500, null);
 								try {
 									Clip theme = AudioSystem.getClip();
-									theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //open the given file for the clip
+									theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //opens the given file for the clip
 									theme.start();
-									
+
 								} catch (Exception e1) {
 									e1.printStackTrace();
 								}
@@ -1636,7 +1623,7 @@ public class Version1 {
 							}
 
 						}
-						// you choose the dialgoe you want and then the game either ends or starts over
+						// you choose the dialogue you want and then the game either ends or starts over
 						else if (where2.equalsIgnoreCase("l")) {
 							c.clear();
 							try {
@@ -1647,15 +1634,15 @@ public class Version1 {
 							}
 							c.drawImage (jpgImage, 0, 80, 500, 500, null);
 							c.println("You find a lockpick at the bottom of a bookshelf. Do you pick it up? (Y/N)");
-							pickup = c.readString();
-							while (!pickup.equalsIgnoreCase("y")&&!pickup.equalsIgnoreCase("n")) {
+							pickUp = c.readString();
+							while (!pickUp.equalsIgnoreCase("y")&&!pickUp.equalsIgnoreCase("n")) {
 								c.clear();
 								c.drawImage (jpgImage, 0, 80, 500, 500, null);
 								c.println("That is not a valid response.");
 								c.println("You find a lockpick at the bottom of a bookshelf. Do you pick it up? (Y/N)");
-								pickup = c.readString();
+								pickUp = c.readString();
 							}
-							if (pickup.equalsIgnoreCase("y")) {
+							if (pickUp.equalsIgnoreCase("y")) {
 								c.clear();
 								c.println("As you pick up the lock pick, you see a trap door under the bed");
 								c.println("and inspect it.");
@@ -1701,9 +1688,9 @@ public class Version1 {
 											c.println("You get depressed to the point of no return... and DIE!");
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //opens the given file for the clip
 												theme.start();
-												
+
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
@@ -1711,7 +1698,7 @@ public class Version1 {
 											s = 6;
 											w = 3;
 										}
-										
+
 									}
 									if (w==5) {
 										answer = passCode;
@@ -1729,146 +1716,58 @@ public class Version1 {
 								if (s==8) {
 									answer = passCode;
 								}
-								
-									if (answer.equalsIgnoreCase(passCode)){
+
+								if (answer.equalsIgnoreCase(passCode)){
+									c.clear();
+									try {
+										Clip theme = AudioSystem.getClip();
+										theme.open(AudioSystem.getAudioInputStream(new File("resources/opendoor.wav"))); //opens the given file for the clip
+										theme.start();
+
+									} catch (Exception e1) {
+										e1.printStackTrace();
+									}
+									c.println("The door opens.");
+									try {
+										jpgImage = ImageIO.read(new File ("resources/hospital.jpg"));
+									} catch (IOException e14) {
+										// TODO Auto-generated catch block
+										e14.printStackTrace();
+									}
+									c.drawImage (jpgImage, 0, 80, 500, 500, null);
+									c.println("The room goes black. Your eyes open. People are around you.");
+									c.println("You hear a man exclaim 'Its a miracle!'");
+									c.println("What do you say? A:Where am I? or B:What happened...(A/B) ");
+									talk1=c.readString();
+									while (!talk1.equalsIgnoreCase("a")&&!talk1.equalsIgnoreCase("b")) {
 										c.clear();
-										try {
-											Clip theme = AudioSystem.getClip();
-											theme.open(AudioSystem.getAudioInputStream(new File("resources/opendoor.wav"))); //open the given file for the clip
-											theme.start();
-										
-										} catch (Exception e1) {
-											e1.printStackTrace();
-										}
-										c.println("The door opens.");
-										try {
-											jpgImage = ImageIO.read(new File ("resources/hospital.jpg"));
-										} catch (IOException e14) {
-											// TODO Auto-generated catch block
-											e14.printStackTrace();
-										}
 										c.drawImage (jpgImage, 0, 80, 500, 500, null);
-										c.println("The room goes black. Your eyes open. People are around you.");
-										c.println("You hear a man exclaim 'Its a miracle!'");
+										c.println("That is not a valid response.");
 										c.println("What do you say? A:Where am I? or B:What happened...(A/B) ");
 										talk1=c.readString();
-										while (!talk1.equalsIgnoreCase("a")&&!talk1.equalsIgnoreCase("b")) {
+									}
+
+
+									if(talk1.equalsIgnoreCase("A")){
+										c.clear();
+										c.drawImage (jpgImage, 0, 80, 500, 500, null);
+										c.println("Man: You are in the Mississauga Central Hospital");
+										c.println("C: Will I be alright? D: Did you find the shooter? (C/D)");
+										talk2=c.readString();
+										while (!talk2.equalsIgnoreCase("c")&&!talk2.equalsIgnoreCase("d")) {
 											c.clear();
 											c.drawImage (jpgImage, 0, 80, 500, 500, null);
 											c.println("That is not a valid response.");
-											c.println("What do you say? A:Where am I? or B:What happened...(A/B) ");
-											talk1=c.readString();
-										}
-
-
-										if(talk1.equalsIgnoreCase("A")){
-											c.clear();
-											c.drawImage (jpgImage, 0, 80, 500, 500, null);
-											c.println("Man: You are in the Mississauga Central Hospital");
 											c.println("C: Will I be alright? D: Did you find the shooter? (C/D)");
 											talk2=c.readString();
-											while (!talk2.equalsIgnoreCase("c")&&!talk2.equalsIgnoreCase("d")) {
-												c.clear();
-												c.drawImage (jpgImage, 0, 80, 500, 500, null);
-												c.println("That is not a valid response.");
-												c.println("C: Will I be alright? D: Did you find the shooter? (C/D)");
-												talk2=c.readString();
-											}
-											if(talk2.equalsIgnoreCase("C")) {
-												c.clear();
-												c.drawImage (jpgImage, 0, 80, 500, 500, null);
-												c.println("Man: Yes, but you won't be able to walk normally ever again.");
-												c.println("After you leave the hospital, you go home and eat a shawarma and burrito.");
-												try {
-													jpgImage = ImageIO.read(new File ("resources/food.jpg"));
-												} catch (IOException e14) {
-													// TODO Auto-generated catch block
-													e14.printStackTrace();
-												}
-												c.drawImage (jpgImage, 0, 80, 500, 500, null);
-												Thread.sleep(5000);
-												c.clear();
-												try {
-													jpgImage = ImageIO.read(new File ("resources/gotaway.jpg"));
-												} catch (IOException e14) {
-													// TODO Auto-generated catch block
-													e14.printStackTrace();
-												}
-												c.drawImage (jpgImage, 0, 80, 500, 500, null);
-												c.println("Unfortunately the shooter was never caught...");
-												try {
-													Clip theme = AudioSystem.getClip();
-													theme.open(AudioSystem.getAudioInputStream(new File("resources/laugh.wav"))); //open the given file for the clip
-													theme.start();
-													
-												} catch (Exception e1) {
-													e1.printStackTrace();
-												}
-												c.println("Thank You for playing!");
-												c.println("Do you want to play again?   (Y/N)");
-												again = c.readString();
-												if (again.equalsIgnoreCase("y")) {
-													play = true;
-													c.clear();
-												}
-												else if (again.equalsIgnoreCase("n")) {
-													play = false;
-												}
-
-											}
-
-											else if(talk2.equalsIgnoreCase("D")) {
-												c.clear();
-												c.println("Man: The shooter got away, but I won a TV from roll up the rim.");
-												c.println("Man: I found the cup at the scene of the shooting.");
-												c.println("Man: You should come watch TV with me sometime...");
-												try {
-													jpgImage = ImageIO.read(new File ("resources/rollup.jpg"));
-												} catch (IOException e14) {
-													// TODO Auto-generated catch block
-													e14.printStackTrace();
-												}
-												c.drawImage (jpgImage, 0, 80, 500, 500, null);
-												try {
-													Clip theme = AudioSystem.getClip();
-													theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //open the given file for the clip
-													theme.start();
-													Thread.sleep(5000);
-													
-												} catch (Exception e1) {
-													e1.printStackTrace();
-												}
-												Thread.sleep(5000);
-												c.clear();
-												c.drawImage (jpgImage, 0, 80, 500, 500, null);
-												c.println("Thank You for playing!");
-												c.println("Do you want to play again?   (Y/N)");
-												again = c.readString();
-												while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
-													c.clear();
-													c.drawImage (jpgImage, 0, 80, 500, 500, null);
-													c.println("That is not a valid response.");
-													c.println("Thank You for playing!");
-													c.println("Do you want to play again?   (Y/N)");
-													again = c.readString();
-												}
-												if (again.equalsIgnoreCase("y")) {
-													play = true;
-													c.clear();
-												}
-												else if (again.equalsIgnoreCase("n")) {
-													play = false;
-												}
-											}
-
 										}
-										else if(talk1.equalsIgnoreCase("B")) { 
+										if(talk2.equalsIgnoreCase("C")) {
 											c.clear();
-											c.println("Man: You and your friend were shot and then brought to the");
-											c.println("hospital.");
-											c.println("Man: You need to stay here until you are both rejuvenated.");
+											c.drawImage (jpgImage, 0, 80, 500, 500, null);
+											c.println("Man: Yes, but you won't be able to walk normally ever again.");
+											c.println("After you leave the hospital, you go home and eat a shawarma and burrito.");
 											try {
-												jpgImage = ImageIO.read(new File ("resources/hospital.jpg"));
+												jpgImage = ImageIO.read(new File ("resources/food.jpg"));
 											} catch (IOException e14) {
 												// TODO Auto-generated catch block
 												e14.printStackTrace();
@@ -1876,24 +1775,59 @@ public class Version1 {
 											c.drawImage (jpgImage, 0, 80, 500, 500, null);
 											Thread.sleep(5000);
 											c.clear();
-											c.println("After 3 weeks you and your friend return to your normal lives... of robbing banks.");
 											try {
-												jpgImage = ImageIO.read(new File ("resources/questover.jpg"));
+												jpgImage = ImageIO.read(new File ("resources/gotaway.jpg"));
 											} catch (IOException e14) {
 												// TODO Auto-generated catch block
 												e14.printStackTrace();
 											}
-											
 											c.drawImage (jpgImage, 0, 80, 500, 500, null);
+											c.println("Unfortunately the shooter was never caught...");
 											try {
 												Clip theme = AudioSystem.getClip();
-												theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //open the given file for the clip
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/laugh.wav"))); //opens the given file for the clip
 												theme.start();
-												Thread.sleep(5000);
-												
+
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
+											c.println("Thank You for playing!");
+											c.println("Do you want to play again?   (Y/N)");
+											again = c.readString();
+											if (again.equalsIgnoreCase("y")) {
+												play = true;
+												c.clear();
+											}
+											else if (again.equalsIgnoreCase("n")) {
+												play = false;
+											}
+
+										}
+
+										else if(talk2.equalsIgnoreCase("D")) {
+											c.clear();
+											c.println("Man: The shooter got away, but I won a TV from roll up the rim.");
+											c.println("Man: I found the cup at the scene of the shooting.");
+											c.println("Man: You should come watch TV with me sometime...");
+											try {
+												jpgImage = ImageIO.read(new File ("resources/rollup.jpg"));
+											} catch (IOException e14) {
+												// TODO Auto-generated catch block
+												e14.printStackTrace();
+											}
+											c.drawImage (jpgImage, 0, 80, 500, 500, null);
+											try {
+												Clip theme = AudioSystem.getClip();
+												theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //opens the given file for the clip
+												theme.start();
+												Thread.sleep(5000);
+
+											} catch (Exception e1) {
+												e1.printStackTrace();
+											}
+											Thread.sleep(5000);
+											c.clear();
+											c.drawImage (jpgImage, 0, 80, 500, 500, null);
 											c.println("Thank You for playing!");
 											c.println("Do you want to play again?   (Y/N)");
 											again = c.readString();
@@ -1913,22 +1847,37 @@ public class Version1 {
 												play = false;
 											}
 										}
+
 									}
-									else{
+									else if(talk1.equalsIgnoreCase("B")) { 
+										c.clear();
+										c.println("Man: You and your friend were shot and then brought to the");
+										c.println("hospital.");
+										c.println("Man: You need to stay here until you are both rejuvenated.");
 										try {
-											jpgImage = ImageIO.read(new File ("resources/sad.jpg"));
+											jpgImage = ImageIO.read(new File ("resources/hospital.jpg"));
 										} catch (IOException e14) {
 											// TODO Auto-generated catch block
 											e14.printStackTrace();
 										}
+										c.drawImage (jpgImage, 0, 80, 500, 500, null);
+										Thread.sleep(5000);
 										c.clear();
-										c.println("You get depressed to the point of no return... and DIE!");
+										c.println("After 3 weeks you and your friend return to your normal lives... of robbing banks.");
+										try {
+											jpgImage = ImageIO.read(new File ("resources/questover.jpg"));
+										} catch (IOException e14) {
+											// TODO Auto-generated catch block
+											e14.printStackTrace();
+										}
+
 										c.drawImage (jpgImage, 0, 80, 500, 500, null);
 										try {
 											Clip theme = AudioSystem.getClip();
-											theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //open the given file for the clip
+											theme.open(AudioSystem.getAudioInputStream(new File("resources/ending.wav"))); //opens the given file for the clip
 											theme.start();
-											
+											Thread.sleep(5000);
+
 										} catch (Exception e1) {
 											e1.printStackTrace();
 										}
@@ -1951,11 +1900,49 @@ public class Version1 {
 											play = false;
 										}
 									}
+								}
+								else{
+									try {
+										jpgImage = ImageIO.read(new File ("resources/sad.jpg"));
+									} catch (IOException e14) {
+										// TODO Auto-generated catch block
+										e14.printStackTrace();
+									}
+									c.clear();
+									c.println("You get depressed to the point of no return... and DIE!");
+									c.drawImage (jpgImage, 0, 80, 500, 500, null);
+									try {
+										Clip theme = AudioSystem.getClip();
+										theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //opens the given file for the clip
+										theme.start();
 
-								
+									} catch (Exception e1) {
+										e1.printStackTrace();
+									}
+									c.println("Thank You for playing!");
+									c.println("Do you want to play again?   (Y/N)");
+									again = c.readString();
+									while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
+										c.clear();
+										c.drawImage (jpgImage, 0, 80, 500, 500, null);
+										c.println("That is not a valid response.");
+										c.println("Thank You for playing!");
+										c.println("Do you want to play again?   (Y/N)");
+										again = c.readString();
+									}
+									if (again.equalsIgnoreCase("y")) {
+										play = true;
+										c.clear();
+									}
+									else if (again.equalsIgnoreCase("n")) {
+										play = false;
+									}
+								}
+
+
 							}
-							// you choose the dialoge you want and then the game either ends or starts over
-							else if (pickup.equalsIgnoreCase("n")) {
+							// you choose the dialogue you want and then the game either ends or starts over
+							else if (pickUp.equalsIgnoreCase("n")) {
 								c.clear();
 								c.println("As you move away from the bookshelf, you fall into the pit and");
 								c.println("DIE!");
@@ -1965,21 +1952,21 @@ public class Version1 {
 									// TODO Auto-generated catch block
 									e14.printStackTrace();
 								}
-								
+
 								try {
 									Clip theme = AudioSystem.getClip();
-									theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming3.wav"))); //open the given file for the clip
+									theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming3.wav"))); //opens the given file for the clip
 									theme.start();
-									
+
 								} catch (Exception e1) {
 									e1.printStackTrace();
 								}
 								c.drawImage (jpgImage, 0, 80, 500, 500, null);
 								try {
 									Clip theme = AudioSystem.getClip();
-									theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //open the given file for the clip
+									theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //opens the given file for the clip
 									theme.start();
-									
+
 								} catch (Exception e1) {
 									e1.printStackTrace();
 								}
@@ -2015,17 +2002,17 @@ public class Version1 {
 							}
 							try {
 								Clip theme = AudioSystem.getClip();
-								theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming3.wav"))); //open the given file for the clip
+								theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming3.wav"))); //opens the given file for the clip
 								theme.start();
-								
+
 							} catch (Exception e1) {
 								e1.printStackTrace();
 							}
 							try {
 								Clip theme = AudioSystem.getClip();
-								theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //open the given file for the clip
+								theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //opens the given file for the clip
 								theme.start();
-								
+
 							} catch (Exception e1) {
 								e1.printStackTrace();
 							}
@@ -2064,20 +2051,20 @@ public class Version1 {
 						}
 						try {
 							Clip theme = AudioSystem.getClip();
-							theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming3.wav"))); //open the given file for the clip
+							theme.open(AudioSystem.getAudioInputStream(new File("resources/screaming3.wav"))); //opens the given file for the clip
 							theme.start();
-							
+
 						} catch (Exception e1) {
 							e1.printStackTrace();
 						}
 						c.drawImage (jpgImage, 0, 80, 500, 500, null);
 						c.println("You fall into a bottomless pit and DIE!");
-						
+
 						try {
 							Clip theme = AudioSystem.getClip();
-							theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //open the given file for the clip
+							theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //opens the given file for the clip
 							theme.start();
-							
+
 						} catch (Exception e1) {
 							e1.printStackTrace();
 						}
@@ -2114,12 +2101,12 @@ public class Version1 {
 					c.drawImage (jpgImage, 0, 80, 500, 500, null);
 					c.println("You hear a voice, 'Let's take him off life support! ");
 					c.println("Mwahahahahahahah!'");
-					c.println("You feel a sharp pain and DIE!");
+					c.println("You feel a sharp pain and DIE!");// End of game 
 					try {
 						Clip theme = AudioSystem.getClip();
-						theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //open the given file for the clip
+						theme.open(AudioSystem.getAudioInputStream(new File("resources/gameover.wav"))); //opens the given file for the clip
 						theme.start();
-						
+
 					} catch (Exception e1) {
 						e1.printStackTrace();
 					}
@@ -2144,7 +2131,7 @@ public class Version1 {
 				}
 
 			}
-		} while(play == true);
+		} while(play == true); // clears the screen,closes program
 		c.clear();
 		c.close();
 	}
