@@ -52,6 +52,7 @@ public class Version1 {
 					}
 				}
 				};
+				// finish this 
 			BufferedImage jpgImage = null;
 			BufferedImage gifImage = null;
 			try {
@@ -64,6 +65,7 @@ public class Version1 {
 			c.setTextBackgroundColor(Color.black);
 			c.setTextColor(Color.white);
 			c.clear();
+			// finish this
 			Thread thread1 = new Thread() {
 				public void run() {
 					while (true) {
@@ -121,6 +123,7 @@ public class Version1 {
 				c.drawImage (jpgImage, 0, 60, 500, 500, null);
 				playGame = c.readString();
 			}
+			// Loops that produces images before the game starts
 			thread1.stop();
 			c.clear();
 			c.println("You and your friend walk into a convenience store.");
@@ -246,6 +249,7 @@ public class Version1 {
 					}
 				}
 			};
+			// Loop that produces images based on what you buy, food or drink
 			thread2.start();
 			item = c.readString();
 			//thread2.interrupt();
@@ -259,6 +263,7 @@ public class Version1 {
 				c.println("Do you buy food or a drink? (food/drink)");
 				item = c.readString();
 			}
+			// If you input anything that is not food or drink this shows up 
 			if (item.equalsIgnoreCase("drink")) {
 				c.clear();
 				c.println("You go to the back to get a drink.");
@@ -287,6 +292,7 @@ public class Version1 {
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
+				// Loop that produces sounds
 				c.println("Suddenly, a man with a gun enters to rob the store and");
 				c.println("shoots your friend!" );
 				try {
@@ -295,6 +301,7 @@ public class Version1 {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				// If you choose drink the robber comes in ans shoots you and an image pops up
 				c.drawImage (jpgImage, 0, 60, 500, 500, null);
 				c.println("After the robber leaves, do you help your friend or call the ");
 				c.println("police? (help/call)");
@@ -307,6 +314,7 @@ public class Version1 {
 					c.println("police? (help/call)");
 					action = c.readString();
 				}
+				// If awnser is invalid this message show up again
 				if (action.equalsIgnoreCase("call")) {
 					int x = (int)(Math.random() *10) + 1;
 					if (x == 1 ||x == 2||x == 3||x == 4||x == 5||x == 6||x == 7||x == 8||x == 9) {
@@ -318,6 +326,7 @@ public class Version1 {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
+						// Random number generator choosing if your friend dies or not
 						c.drawImage (jpgImage, 0, 60, 500, 500, null);
 						c.println("You are brimming with RAGE. Do you want to get REVENGE?! (Y/N)");
 						try {
@@ -344,6 +353,7 @@ public class Version1 {
 							}
 							revenge = c.readString();
 						}
+						// If you input an invalid response the beginning question is repeated
 						while (revenge.equalsIgnoreCase("n")) {
 							for (s=0;s<3;s++) {
 								if (s == 0) {
@@ -369,6 +379,7 @@ public class Version1 {
 										
 									
 								}
+								// If you answer no, the question is re asked 
 									if (revenge.equalsIgnoreCase("y")) {
 										s=5;
 									}
@@ -395,6 +406,7 @@ public class Version1 {
 								else {
 									revenge = "dw";
 								}
+								// If you choose no revenge you then get the message above and then picutres pop up
 							}
 						}
 
@@ -410,11 +422,12 @@ public class Version1 {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
 							}
+							// Images pop up
 							c.drawImage (gifImage, 0, 80, 500, 500, null);
 							c.println("Do you look for the evidence in the garbage or at the shooting ");
 							c.println("site? (garbage/site)");
 							evidence = c.readString();
-							
+					
 							while (!evidence.equalsIgnoreCase("garbage")&&!evidence.equalsIgnoreCase("site")) {
 								c.clear();
 								c.drawImage (gifImage, 0, 80, 500, 500, null);
@@ -423,6 +436,7 @@ public class Version1 {
 								c.println("site? (garbage/site)");
 								evidence = c.readString();
 							}
+							// If answer for question is invalid, question is re asked
 							if (evidence.equalsIgnoreCase("garbage")) {
 								c.clear();
 								c.println("You do not find anything important. There is a half-eaten");
@@ -435,6 +449,7 @@ public class Version1 {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
+								// You look in the garbage, find nothing then go to the site, picture pops up
 								c.drawImage (jpgImage, 0, 80, 500, 500, null);
 								c.println("Do you keep the license, or give it to the police?(keep/give)");
 								license = c.readString();
@@ -463,6 +478,7 @@ public class Version1 {
 									} catch (Exception e1) {
 										e1.printStackTrace();
 									}
+									// A question is asked and then photos pop up
 									c.println("When you get there, the police are outside the residence.");
 									c.println("Do you give up or go through the back door? (quit/door)");
 									decision = c.readString();
@@ -473,6 +489,7 @@ public class Version1 {
 										c.println("Do you give up or go through the back door? (quit/door)");
 										decision = c.readString();
 									}
+									// If answer is invaild this message pops up
 									if (decision.equalsIgnoreCase("door")) {
 										c.clear();
 										c.println("The back door is open and you enter. You find a gun and a fire");
@@ -484,6 +501,7 @@ public class Version1 {
 											// TODO Auto-generated catch block
 											e1.printStackTrace();
 										}
+										//question is asked and photo pops up
 										c.drawImage (jpgImage, 0, 80, 500, 500, null);
 										weapon = c.readString();
 										while (!weapon.equalsIgnoreCase("gun")&&!weapon.equalsIgnoreCase("extinguisher")) {
@@ -493,6 +511,7 @@ public class Version1 {
 											c.println("Which do you choose? (gun/extinguisher)");
 											weapon = c.readString();
 										}
+										// If answer is invaild this message pops up
 										if(weapon.equalsIgnoreCase("extinguisher")) {
 											c.clear();
 											try {
@@ -511,6 +530,7 @@ public class Version1 {
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
+											// Sounds are produced
 											Thread.sleep(5000);
 											c.println("You hit the shooter on the head with the fire extinguisher, and");
 											c.println("he gets knocked out.");
@@ -520,6 +540,7 @@ public class Version1 {
 												// TODO Auto-generated catch block
 												e1.printStackTrace();
 											}
+											// Images are produced
 											c.drawImage (jpgImage, 0, 80, 500, 500, null);
 											Thread.sleep(3000);
 											c.println("The police hear the noise and come inside. They arrest the");
@@ -533,6 +554,7 @@ public class Version1 {
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
+											// sounds are produced
 											c.println("Thank You for playing!");
 											c.println("Do you want to play again?   (Y/N)");
 											again = c.readString();
@@ -544,6 +566,7 @@ public class Version1 {
 												c.println("Do you want to play again?   (Y/N)");
 												again = c.readString();
 											}
+											// If question is invaild this message pops up
 											if (again.equalsIgnoreCase("y")) {
 												play = true;
 												c.clear();
@@ -551,6 +574,7 @@ public class Version1 {
 											else if (again.equalsIgnoreCase("n")) {
 												play = false;
 											}
+											// Game either ends or continues based on your answer
 										}
 										else if (weapon.equalsIgnoreCase("gun")){
 											c.clear();
@@ -595,6 +619,7 @@ public class Version1 {
 											} catch (Exception e1) {
 												e1.printStackTrace();
 											}
+											// If you grabbed the gun the robber kills you and photos pop up
 											c.println("Thank You for playing!");
 											c.println("Do you want to play again?   (Y/N)");
 											again = c.readString();
@@ -615,6 +640,7 @@ public class Version1 {
 											}
 										}
 									}
+									// Game is either continued or over based on your answer
 									else if (decision.equalsIgnoreCase("quit")) {
 										c.clear();
 										try {
@@ -637,7 +663,7 @@ public class Version1 {
 										c.println("Yes. That is your home. You used to live at your");
 										c.println("friend's place after you were kicked out by your parents.");
 										c.println("Thank You for playing!");
-										
+										// you go home and photos pop up
 										c.println("Do you want to play again?   (Y/N)");
 										again = c.readString();
 										while (!again.equalsIgnoreCase("y")&&!again.equalsIgnoreCase("n")) {
@@ -657,6 +683,7 @@ public class Version1 {
 										}
 									}
 								}
+								// Based on your answer the game either ends or continues
 								else if (license.equalsIgnoreCase("give")) {
 									c.clear();
 									try {
@@ -682,6 +709,7 @@ public class Version1 {
 									} catch (Exception e1) {
 										e1.printStackTrace();
 									}
+									// you give the license to the cops and photos pop up
 									c.drawImage (jpgImage, 0, 80, 500, 500, null);
 									c.println("Thank You for playing!");
 									c.println("Do you want to play again?   (Y/N)");
@@ -703,6 +731,7 @@ public class Version1 {
 									}
 								}
 							}
+							// based on your answer the game either continues or ends
 							else if (evidence.equalsIgnoreCase("site")) {
 								c.clear();
 								c.println("You find the driver's licence of the shooter.");
@@ -712,6 +741,7 @@ public class Version1 {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
+								// A photo pops up
 								c.drawImage (jpgImage, 0, 80, 500, 500, null);
 								c.println("Do you keep the license, or give it to the police?(keep/give)");
 								license = c.readString();
@@ -722,6 +752,7 @@ public class Version1 {
 									c.println("Do you keep the license, or give it to the police?(keep/give)");
 									license = c.readString();
 								}
+								// If answer is invalid this message is pops up
 								if (license.equalsIgnoreCase("keep")){
 									c.clear();
 									c.println("You see the address on the license and go there...");
@@ -740,6 +771,7 @@ public class Version1 {
 									} catch (Exception e1) {
 										e1.printStackTrace();
 									}
+									// Images pop up
 									c.println("When you get there, the police are outside the residence.");
 									c.println("Do you give up or go through the back door? (quit/door)");
 									decision = c.readString();
@@ -837,6 +869,7 @@ public class Version1 {
 												play = false;
 											}
 										}
+										// you knock out the robber and then the game either ends or starts over, images also pop up
 										else if (weapon.equalsIgnoreCase("gun")){
 											c.clear();
 											c.println("You grab the gun, but it's filled with blanks.");
@@ -903,6 +936,7 @@ public class Version1 {
 											}
 										}
 									}
+									// You get killed by the robber and the game either ends or starts over, images pop up
 									else if (decision.equalsIgnoreCase("quit")){
 										c.clear();
 										c.println("You give up and go home.");
@@ -944,6 +978,7 @@ public class Version1 {
 										}
 									}
 								}
+								// you give up and go home, sounds are produced and the game either ends or starts over
 								else if (license.equalsIgnoreCase("give")) {
 									c.clear();
 									c.println("The cops take the license and find the robber.");
@@ -984,6 +1019,7 @@ public class Version1 {
 								}
 							}
 						}
+						// the cops find the robber, sounds are produced and the game either ends or starts over
 						else if (revenge.equals("dw")) {
 							c.drawImage (jpgImage, 0, 80, 500, 500, null);
 							c.println("Thank You for playing!");
@@ -1006,6 +1042,7 @@ public class Version1 {
 							}
 						}
 					}
+					// game either ends or starts over
 					else {  
 						try {
 							jpgImage = ImageIO.read(new File ("resources/questover.jpg"));
@@ -1049,6 +1086,7 @@ public class Version1 {
 						}
 					}
 				}
+				// Your friend survives getting shot and the robber is caught, sounds are produced and the game either ends or starts over
 				else if (action.equalsIgnoreCase("help")){
 					c.clear();
 					try {
@@ -1092,7 +1130,7 @@ public class Version1 {
 					}
 				}
 			}
-
+			// Your friend survives but the robber is not caught, sounds are produced and the game either ends or starts over
 			else if (item.equalsIgnoreCase("food")) {
 				c.clear();
 				c.println("As you go to get food, a masked burgular enters the store and");
@@ -1164,6 +1202,7 @@ public class Version1 {
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
+				// sounds are produced
 				Thread.sleep(3000);
 				c.println("You wake up in a windowless room. You are lying in a bed.");
 				c.println("Do you get up?(y/n)");
@@ -1199,6 +1238,7 @@ public class Version1 {
 						}
 
 					}
+					// If you go left you find nothing, the beginning question is asked
 					if (where1.equalsIgnoreCase("f")) {
 						c.clear();
 						c.println("While you are walking forward, your foot touches something.");
@@ -1219,6 +1259,7 @@ public class Version1 {
 							// TODO Auto-generated catch block
 							e14.printStackTrace();
 						}
+						// If you go forward you find a flashlight and turn it one, sounds are produced
 						c.drawImage (jpgImage, 0, 80, 500, 500, null);
 						Thread.sleep(5000);
 						c.clear();
@@ -1235,6 +1276,7 @@ public class Version1 {
 							c.println("Do you go forward, left, or right? (f/l/r)");
 							where2 = c.readString();
 						}
+						// If you give an invalid response this message pops up 
 						if (where2.equalsIgnoreCase("f")) {
 							c.clear();
 							c.println("You pick up the bag and find a key.");
@@ -1252,7 +1294,7 @@ public class Version1 {
 								combo[i] = (int)(Math.random() *26) + 1;
 								passCode = passCode + combo[i];
 							}
-
+							// random number generator to unlock the trap door
 							c.println("Enter the following: " + passCode);
 							answer = c.readString();
 							int x = (int)(Math.random() *10) + 1;
@@ -1359,6 +1401,7 @@ public class Version1 {
 								}
 								
 							}
+							// Game either ends or starts over
 							else if (answer.equalsIgnoreCase(passCode)){
 								c.clear();
 								try {
@@ -1448,8 +1491,8 @@ public class Version1 {
 										}
 
 									}
-
-
+				
+									
 									else if(talk2.equalsIgnoreCase("D")) {
 										c.clear();
 										c.drawImage (jpgImage, 0, 80, 500, 500, null);
@@ -1593,6 +1636,7 @@ public class Version1 {
 							}
 
 						}
+						// you choose the dialgoe you want and then the game either ends or starts over
 						else if (where2.equalsIgnoreCase("l")) {
 							c.clear();
 							try {
@@ -1910,6 +1954,7 @@ public class Version1 {
 
 								
 							}
+							// you choose the dialoge you want and then the game either ends or starts over
 							else if (pickup.equalsIgnoreCase("n")) {
 								c.clear();
 								c.println("As you move away from the bookshelf, you fall into the pit and");
