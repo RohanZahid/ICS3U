@@ -11,7 +11,7 @@ public class PerfectIntegers {
 		for (int a = 1; a < 1000; a++) {
 			int factors = 0;
 			for (int b = 1; b < a; b++) {
-				if (a % b == 0) {
+				if (isDivisible(a,b)) {
 					factors = factors + b;
 				}
 			}
@@ -20,4 +20,14 @@ public class PerfectIntegers {
 			}
 		}
 	}
+
+	private static boolean isDivisible(int a, int b) {
+		if (a%b == 0) {
+			return true;
+		}
+		else{
+			return false;
+		}
+
+	} 
 }
