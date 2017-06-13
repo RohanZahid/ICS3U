@@ -14,7 +14,8 @@ public class MiningFinal {
 		Behavior b1 = new Spin(cups);
 		Behavior b2 = new CheckDistance();
 		Behavior b3 = new DriveForward();
-		Behavior [] behaviors = {b1, b2, b3};
+		Behavior b4 = new ExitProgram();
+		Behavior [] behaviors = {b1, b2, b3, b4};
 		
 		Arbitrator arby = new Arbitrator(behaviors);
 		arby.start();

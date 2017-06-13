@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import lejos.robotics.subsumption.Behavior;
 public class Spin implements Behavior {
 	private boolean suppressed = false;
-	private LightSensor light = new LightSensor (SensorPort.S4);
+	private LightSensor light = new LightSensor (SensorPort.S2);
 	private ArrayList<Location> cups;
 	public Spin(ArrayList<Location> cups) {
 		this.cups = cups;
@@ -25,7 +25,8 @@ public class Spin implements Behavior {
 
 	@Override
 	public void action() {
-		Motor.A.forward();
+		Motor.C.rotate(360);
+		Motor.B.rotate(360);
 	}
 
 	@Override
