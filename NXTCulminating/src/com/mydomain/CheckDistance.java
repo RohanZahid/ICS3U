@@ -7,7 +7,7 @@ import lejos.robotics.subsumption.Behavior;
 import lejos.util.Delay;
 
 import java.util.ArrayList;
-import java.util.Collections;
+//import java.util.Collections;
 
 import lejos.robotics.subsumption.Behavior;
 public class CheckDistance implements Behavior {
