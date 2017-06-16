@@ -20,10 +20,10 @@ public class DriveForward implements Behavior{
 		this.light = ls;
 		this.x = x;
 	}
-	
+
 	@Override
 	public boolean takeControl() {
-		if (sonar.getDistance() < 35) //&& sonar.getDistance() > 10)// && x == 0)
+		if (sonar.getDistance() < 35 && sonar.getDistance() > 10)// && x == 0)
 			return true;
 		return false;
 	}
@@ -32,21 +32,10 @@ public class DriveForward implements Behavior{
 	public void action() {
 		Motor.C.forward();
 		Motor.B.forward();
-		while (sonar.getDistance() > 10) {
-
-		}
-		Motor.C.stop();
-		Motor.B.stop();
-		Motor.C.backward();
-		Motor.B.backward();
-		while (true) {
-			if (light.readValue() < 40){
-				Delay.msDelay(300);
-				suppressed = true;
-				break;
-			}
-		}
 	}
+
+
+
 
 
 

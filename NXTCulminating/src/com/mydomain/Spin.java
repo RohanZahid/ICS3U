@@ -20,6 +20,7 @@ public class Spin implements Behavior {
 	@Override
 	public void action() {
 		//LCD.drawString("Program 2", 0, 0);
+		Motor.B.stop();
 		Motor.C.backward();
 	}
 
