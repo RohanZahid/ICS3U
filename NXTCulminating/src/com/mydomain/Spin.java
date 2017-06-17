@@ -1,29 +1,40 @@
 package com.mydomain;
 
-import lejos.nxt.LCD;
-import lejos.nxt.LightSensor;
 import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
-import lejos.nxt.UltrasonicSensor;
-import lejos.nxt.addon.GyroSensor;
 import lejos.robotics.subsumption.Behavior;
-import java.util.ArrayList;
-import lejos.robotics.subsumption.Behavior;
+
+/**
+ * Spin.java
+ * Spins when behaviors of a higher priority are not initiated.
+ * 2017/06/15
+ * @author RohanZahid
+ */
 public class Spin implements Behavior {
 	private boolean suppressed = false;
 	
+	/** 
+	 * Takes control of the program.
+	 * @return boolean true or false.
+	 */ 
 	@Override
 	public boolean takeControl() {
-			return true;
+			return true; //Returns true without conditions because it is the base behavior.
 	}
-
+	
+	/** 
+	 * Spins when control is achieved.
+	 */ 
 	@Override
 	public void action() {
-		//LCD.drawString("Program 2", 0, 0);
-		Motor.B.stop();
-		Motor.C.backward();
+		Motor.B.stop(); //Stops motor B.
+		Motor.C.backward(); //Rotates motor C backwards.
 	}
-
+	
+	/** 
+	 * Suppresses behavior.
+	 * @return void.
+	 */ 
 	@Override
 	public void suppress() {
 		suppressed = true;
